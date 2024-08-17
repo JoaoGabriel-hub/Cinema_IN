@@ -1,0 +1,33 @@
+.header {
+    width: 100%;
+    height: 10.625rem;
+    background-color: var( --principalSource);
+    box-shadow: 0 .4rem var(--cinzaPreto) 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.logo{
+    width: 15.625rem;
+    height: 6.125rem;
+}
+
+.buttons {
+    width: 11.375rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 2.875rem;
+    height: 2.875rem;
+    background-color: transparent;
+    border: none;
+}
+
+button img {
+    width: 2.875rem;
+    height: 2.875rem;
+}
