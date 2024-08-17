@@ -2,7 +2,7 @@
     width: 100%;
     height: 10.625rem;
     background-color: var( --principalSource);
-    box-shadow: 0 .4rem var(--cinzaPreto) 25%;
+    box-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: space-between;
     align-items: center;
