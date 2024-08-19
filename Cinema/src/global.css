@@ -66,6 +66,13 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #1E1E1E;
+    background-image: url(./assets/Fundo-Ingresso.svg);
+    background-size: cover;
+    background-position: center;
+}
+
 /* FONTES */ 
 
 h1 { /* titulo */
