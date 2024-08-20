@@ -1,0 +1,42 @@
+.pesquisafundo {
+    width: 90rem;
+    height: 15.625rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--principal800);
+}
+
+.pesquisa {
+    display: flex;
+}
+
+.barra {
+    width: 65.875rem;
+    height: 2.813rem;
+    background-color: var(--cinza50);
+    border-radius: 1.5rem;
+    margin: 0;
+}
+
+.botaopesquisa, 
+.botaopesquisa img {
+    width: 3.825rem;
+    height: 3.865rem;
+    margin-left: -2rem;
+    margin-top: -.2rem;
+}
+
+.filtros {
+    width: 67rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 3rem;
+}
+
+.filter {
+    width: 19.375rem;
+    height: 3.25rem;
+}
