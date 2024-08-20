@@ -25,6 +25,12 @@ button {
     height: 2.875rem;
     background-color: transparent;
     border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    transform:  translate(-.1rem, -.1rem);
+    transition: 2ms ease-in-out;
 }
 
 button img {
