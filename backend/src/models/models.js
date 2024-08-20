@@ -6,7 +6,6 @@ const { v4: UUIDV4 } = require("uuid");
 const Movie = sequelize.define("Movie", {
     title: {
         type: DataTypes.STRING,
-        primaryKey: true,
         allowNull: false
     },
     imageUrl: {
@@ -28,6 +27,12 @@ const Movie = sequelize.define("Movie", {
     director: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    movieId: {
+        type: DataTypes.UUID,
+        defaultValue: () => UUIDV4(),
+        primaryKey: true,
+        allowNull: false
     }
 });
 
@@ -35,7 +40,6 @@ const Movie = sequelize.define("Movie", {
 const Session = sequelize.define("Session", {
     time: {
         type: DataTypes.STRING,
-        primaryKey: true,
         allowNull: false
     },
     city: {
@@ -48,6 +52,15 @@ const Session = sequelize.define("Session", {
     },
     type: {
         type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    movieId: {
+        type: DataTypes.UUID
+    },
+    sessionId: {
+        type: DataTypes.UUID,
+        defaultValue: () => UUIDV4(),
+        primaryKey: true,
         allowNull: false
     }
 });
@@ -79,6 +92,9 @@ const Seat = sequelize.define("Seat", {
     userName: {
     type: DataTypes.STRING,
     allowNull: false
+    },
+    sessionId: {
+        type: DataTypes.UUIDV4
     }
 });
 
@@ -116,12 +132,15 @@ const User = sequelize.define("User", {
 });
 
 // Relação entre Movie e Session
-Movie.hasMany(Session, {onDelete: "CASCADE", foreignKey: "SessionTime"}); // Em caso de erros, devo olhar essa linha, principalmente a foreignKey
-Session.belongsTo(Movie);
+Movie.hasMany(Session, {onDelete: "CASCADE", foreignKey: "movieId"}); // Em caso de erros, devo olhar essa linha, principalmente a foreignKey
+Session.belongsTo(Movie, {foreignKey: "movieId"});
 
 // Relação entre Session e Seat
-Session.hasMany(Seat, {onDelete: "CASCADE", foreignKey: "SeatId"}); // Em caso de erros, devo olhar essa linha, principalmente a foreignKey
-Seat.belongsTo(Session);
+Session.hasMany(Seat, {onDelete: "CASCADE", foreignKey: "sessionId"}); // Em caso de erros, devo olhar essa linha, principalmente a foreignKey
+Seat.belongsTo(Session, {foreignKey: "sessionId"});
+
+Seat.belongsTo(User);
+User.hasMany(Seat, { onDelete: 'CASCADE' });
 
 // Exportação das variáveis
 module.exports = {
