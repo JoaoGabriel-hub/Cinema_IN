@@ -1,0 +1,87 @@
+  .swiper {
+    width: 80.25rem;
+    height: 32.5rem;
+    margin-top: 3rem;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background-image: url(src/assets/Subtract.svg);
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .fundo {
+    position: relative;
+    width: 68.125rem;
+    height: 27.375rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--callToAction300);
+    
+  }
+
+  .textos {
+    width: 35.563rem;
+    height: 15.938rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 2rem;
+    gap: .5rem;
+  }
+
+  .textos h1 {
+    text-align: left;
+  }
+
+  .fundo img {
+    width: 18.75rem;
+    height: 18.75rem;
+    margin-left: 5.313rem;
+  }
+
+  .next {
+    width: 5.188rem; 
+    height: 5.188rem;
+    position: absolute; 
+    left: 82rem;
+    margin-top: -18.8rem;
+  }
+
+  .next:hover {
+    transform: none;
+  }
+  
+  .next img {
+    width: 5.188rem;
+    height: 5.188rem;
+  }
+  
+  .prev {
+    width: 5.188rem; 
+    height: 5.188rem;
+    position: absolute; 
+    left: 1.8rem;
+    margin-top: 13.6rem;
+  }
+
+  .prev:hover {
+    transform: none;
+  }
+
+  .prev img {
+    width: 5.188rem;
+    height: 5.188rem;
+  }
+  
