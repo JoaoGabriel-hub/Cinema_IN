@@ -69,7 +69,7 @@ const Seat = sequelize.define("Seat", {
     },
 
     price: {
-        typ: DataTypes.FLOAT,
+        type: DataTypes.FLOAT,
         allowNull: false
     },
     userCpf: {
