@@ -1,0 +1,79 @@
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(30, 30, 30, 0.9);
+    height: 100%;
+    z-index: 1;
+}
+
+body > * {
+    position: relative;
+    z-index: 2;
+}
+
+header {
+    height: 16.875rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 4rem;
+    background-image: url(src/assets/Fundo.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--cinzaBranco);
+}
+
+header h1, footer h1 {
+    text-align: left;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    color: var(--cinzaBranco);
+    padding: 4rem;
+}
+
+
+.filmes {
+    display: flex;
+    gap: 2rem;
+}
+
+.emcartaz {
+    width: 14.442rem;
+    height: 27.259rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.emcartaz button {
+    width: 14.384rem;
+    height: 2.759rem;
+    background-color: var(--callToActionSource);
+    color: var(--cinzaBranco);
+    border-radius: 0.504rem;
+    padding: 0.504rem;
+}
+
+.emcartaz button:hover {
+    background-color: #e09a21;
+}
+
+.cartaz {
+    width: 14.375rem;
+    height: 21.25rem;
+    border-radius: .5rem;
+    box-shadow: 0 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
+}
+
+a {
+    color: var(--cinzaBranco);
+    text-align: right;
+    font-family: "Roboto";
+    margin: 1rem 0 3rem;
+}
