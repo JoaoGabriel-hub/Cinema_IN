@@ -1,0 +1,100 @@
+:root{
+    --principalSource: #0066cc;
+    --principal900: #003877;
+    --principal800: #004a9b;
+    --principal500: #4a84ec;
+    --principal400: #6d98fb;
+    --principal100: #d2dbff;
+
+    --complementarSource: #0bb0e3;
+    --complementar900: #00405e;
+    --complementar800: #00557b;
+    --complementar500: #0092c3;
+    --complementar400: #2ba7d4;
+    --complementar100: #bfe2f5;
+
+    --complementar2Source: #0bd9d3;
+    --complementar2900: #004442;
+    --complementar2800: #005a57;
+    --complementar2500: #009a95;
+    --complementar2400: #00aea9;
+    --complementar2100: #b6e6e6;
+
+    --sombraSource: #00264d;
+    --sombra900: #2b3955;
+    --sombra800: #394b70;
+    --sombra700: #4a5e89;
+
+    --sombra2Source: #004c99;
+    --sombra2900: #1a386a;
+    --sombra2800: #224a8b;
+    --sombra2700: #305da8;
+
+    --callToActionSource: #cc8000;
+    --callToAction500: #bf7600;
+    --callToAction400: #d48c29;
+    --callToAction300: #e6a352;
+
+    --cancelSource: #cc2014;
+    --cancel700: #bb180f;
+    --cancel600: #d82f1e;
+
+    --confirmSource: #00cc54;
+    --confirm600: #008912;
+    --confirm400: #03b349;
+
+    --textoSource: #001122;
+    --texto50: #f2f4f7;
+    
+    --cinzaPreto: #000;
+    --cinza900: #393939;
+    --cinza800: #4b4b4b;
+    --cinza700: #5e5e5e;
+    --cinza600: #727272;
+    --cinza500: #868686;
+    --cinza400: #9b9b9b;
+    --cinza300: #b0b0b0;
+    --cinza200: #c6c6c6;
+    --cinza100: #ddd;
+    --cinza50: #f3f3f3;
+    --cinzaBranco: #fff;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1E1E1E;
+    background-image: url(./assets/Fundo-Ingresso.svg);
+    background-size: cover;
+    background-position: center;
+}
+
+/* FONTES */ 
+
+h1 { /* titulo */
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+h2 { /* subtitulo */
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+h3{ /* texto funcional */
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+p{ /* texto corrido */
+    font-family: "Roboto", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+}
