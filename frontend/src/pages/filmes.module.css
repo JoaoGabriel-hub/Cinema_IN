@@ -1,5 +1,4 @@
 .pesquisafundo {
-    width: 90rem;
     height: 15.625rem;
     display: flex;
     flex-direction: column;
@@ -36,7 +35,49 @@
     gap: 3rem;
 }
 
-.filter {
+select {
     width: 19.375rem;
     height: 3.25rem;
+    background-color: var(--complementar800);
+    color: var(--cinza50);
+    font-family: "Roboto";
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-left: 1rem;
+    border-radius: .55rem;
+    border: none;
+    border-left: solid 1rem var(--principalSource);
+    box-shadow: 0 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
+}
+
+select option {
+    width: 5rem;
+    height: 3rem;
+    background-color: var(--cinza50);
+    color: var(--cinzaPreto);
+    font-size: 1.5rem;
+    overflow-y: auto;
+    text-overflow: ellipsis;
+}
+
+.corpo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.corpo h1 {
+    text-align: left;
+    padding-left: 12.5rem;
+    margin: 2rem 0;
+    color: var(--cinza50);
+    font-family: 'Nunito Sans';
+    font-size: 3rem;
+}
+
+.filmes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4rem;
 }

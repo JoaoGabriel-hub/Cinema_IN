@@ -1,0 +1,24 @@
+.botaosessao {
+    width: 6.625rem;
+    height: 3.25rem;
+    background-color: transparent;
+    border: solid .2rem var(--principalSource);
+    border-radius: 1.625rem;
+    color: var(--principalSource);
+    font-size: 1.5rem;
+}
+
+.sessoes {
+    width: 57.313rem;
+    height: 11.75rem;
+    background-color: #1E1E1E;
+    border-radius: .5rem;
+    padding: 1.5rem 1.5rem 3rem 1.5rem;
+    gap: 1.75rem;
+    margin: 5rem 0;
+}
+
+.titulo {
+    width: 5rem;
+    height: 2.25rem;
+}
