@@ -5,7 +5,7 @@ export function Header() {
     return(
         <div>
             <div className={style.header}>
-                <img src="src/assets/Logo.svg" className={style.logo} />
+                <NavLink to="/"><img src="src/assets/Logo.svg" className={style.logo} /></NavLink>
                 <div className={style.buttons}>
                     <NavLink to="/filmes">
                         <button>
