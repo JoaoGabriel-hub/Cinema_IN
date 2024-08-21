@@ -13,12 +13,36 @@
     height: 11.75rem;
     background-color: #1E1E1E;
     border-radius: .5rem;
+    border: 1px solid red;
     padding: 1.5rem 1.5rem 3rem 1.5rem;
-    gap: 1.75rem;
     margin: 5rem 0;
 }
 
 .titulo {
     width: 5rem;
     height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--callToAction400);
+    color: var(--cinzaPreto);
+    border-radius: .25rem;
+    font-family: "Roboto";
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.tdhora {
+    display: flex;
+    gap: 1rem;
+}
+
+.botaohorario {
+    width: 6.625rem;
+    height: 3.25rem;
+    background-color: transparent;
+    border: solid .2rem var(--principalSource);
+    border-radius: 0.188rem;
+    color: var(--principalSource);
+    font-size: 1.5rem;
 }

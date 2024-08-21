@@ -10,8 +10,8 @@ export function Horarios() {
         </div>
 
         <div className={style.sessoes}>
-            <div>2D</div>
-            <div>
+            <div className={style.titulo}>2D</div>
+            <div className={style.tdhora}>
                 <button className={style.botaohorario}></button>
                 <button className={style.botaohorario}></button>
                 <button className={style.botaohorario}></button>
@@ -19,8 +19,8 @@ export function Horarios() {
             </div>
         </div>
         <div className={style.sessoes}>
-            <div>2D</div>
-            <div>
+            <div className={style.titulo}>2D</div>
+            <div className={style.tdhora}>
                 <button className={style.botaohorario}></button>
                 <button className={style.botaohorario}></button>
                 <button className={style.botaohorario}></button>
@@ -28,8 +28,8 @@ export function Horarios() {
             </div>
         </div>
         <div className={style.sessoes}>
-            <div>3D</div>
-            <div>
+            <div className={style.titulo}>3D</div>
+            <div className={style.tdhora}>
                 <button className={style.botaohorario}></button>
                 <button className={style.botaohorario}></button>
                 <button className={style.botaohorario}></button>
