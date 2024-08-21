@@ -1,3 +1,7 @@
+.pagina {
+    display: flex;
+}
+
 .asideassentos {
     width: 22.4rem;
     height: 48.75rem;

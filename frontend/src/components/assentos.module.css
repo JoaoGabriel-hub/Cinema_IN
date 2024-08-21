@@ -1,0 +1,81 @@
+.cinema {
+    width: 56.25rem;
+    height: 43.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #141414;
+    box-shadow: 0 0 .5rem .25rem #141414;
+    margin: 3rem 5rem;
+}
+
+.seats {
+    width: 48.813rem;
+    height: 27rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4rem;
+}
+
+.seats p {
+    color: var(--cinza400);
+    font-size: 1.5rem;
+    font-family: "Poppins";
+    text-align: center;
+    line-height: 2.5rem;
+    margin-bottom: 1.7rem;
+}
+
+.seatContainer {
+    width: 33.125rem;
+    height: 26rem;
+    margin-top: .1rem;
+}
+
+.seatRow {
+    width: 33.125rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.seatButton {
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border-radius: .5rem .5rem 0 0;
+    border: solid var(--principal800) .188rem;
+    background-color: #141414;
+    cursor: pointer;
+}
+
+.seatButton:hover {
+    background-color: var(--principal500);
+    border-color: var(--principal500);
+}
+
+.seatButton:checked {
+    background-color: var(--callToActionSource);
+    border-color: var(--callToActionSource);
+}
+
+.caption {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+.caption div {
+    width: 48.438rem;
+    height: .2rem;
+    background-color: var(--cinza400);
+}
+
+.caption h3 {
+    color:var(--cinza300);
+    font-family: "Poppins";
+    font-size: 1rem;
+}
+.caption img {
+    width: 29.125rem;
+}

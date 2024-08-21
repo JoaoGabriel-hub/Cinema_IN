@@ -3,6 +3,7 @@ import { Footer } from "../components/Footer"
 import { NavLink } from "react-router-dom"
 import { useLocation } from 'react-router-dom';
 import style from "./checkout.module.css"
+import Assentos from "../components/Assentos";
 
 export function Checkout() {
     const location = useLocation();
@@ -11,7 +12,8 @@ export function Checkout() {
     return(
         <>
             <Header />
-            <div className={style.asideassentos}>
+            <div className={style.pagina}>
+                <div className={style.asideassentos}>
             {hora && tipoTela ? (
                 <div>
                     <div className={style.filme}>
@@ -33,11 +35,11 @@ export function Checkout() {
                             <button>CONFIRMAR</button>
                     </div>
                 </div>
-            ):(p)};
+            ):(<p>Erro!</p>)};
+                </div>
+                <Assentos />
             </div>
-            <div className={style.fundolugares}>
-
-            </div>
+            
             <Footer />
         </>
     )
