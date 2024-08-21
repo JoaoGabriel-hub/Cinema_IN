@@ -10,13 +10,12 @@ Um projeto para o Processo Seletivo da empresa **IN Junior** (Empresa Júnior de
 - Node
 
 ## Executando o Projeto
-**Front-End**
-1. Insira os seguintes comandos no Terminal:
-```
-cd frontend
-npm run dev
-```
-**Back-End**
+**Front-End:**
+1. Insira os seguintes comandos no Terminal:<br/>
+`cd frontend`<br/>
+`npm run dev`
+
+**Back-End:**
 1. Certifique-se de possuir o yarn instalado, caso não, abra o terminal e utilize o seguinte código:<br/>
 `npm install --global yarn`
 
