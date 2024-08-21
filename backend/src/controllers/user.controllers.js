@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
-const User = require('../models/User');
+const { User } = require('../models/models');  // Certifique-se de desestruturar corretamente
+
 
 const registerUser = async (req, res) => {
     const { name, lastName, cpf, birthday, username, email, password } = req.body;
@@ -35,7 +36,7 @@ const registerUser = async (req, res) => {
         });
 
         // Resposta de sucesso
-        return res.status(201).json({ message: 'Usuário registrado com sucesso!' });
+        return res.status(201).json(user);
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: 'Erro ao registrar usuário' });
