@@ -1,0 +1,67 @@
+.corpohorarios {
+    margin-left: 2.813rem;
+}
+
+.botaosessao {
+    width: 6.625rem;
+    height: 3.25rem;
+    background-color: transparent;
+    border: solid .2rem var(--principalSource);
+    border-radius: 1.625rem;
+    color: var(--principalSource);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 1rem 1rem 0;
+}
+
+.botaosessao:hover {
+    background-color: var(--principalSource);
+    color: #1E1E1E;
+    transform: none;
+}
+
+.sessoes {
+    width: 57.313rem;
+    height: 11.75rem;
+    background-color: #141414;
+    border-radius: .5rem;
+    padding: 1.5rem 1.5rem 3rem 1.5rem;
+    margin: 0 0 2rem ;
+}
+
+.titulo {
+    width: 5rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--callToAction400);
+    color: var(--cinzaPreto);
+    border-radius: .25rem;
+    font-family: "Roboto";
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.tdhora {
+    display: flex;
+    gap: 1rem;
+}
+
+.botaohorario {
+    width: 6.625rem;
+    height: 3.25rem;
+    background-color: transparent;
+    border: solid .2rem var(--principalSource);
+    border-radius: 0.6rem;
+    color: var(--principalSource);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+.botaohorario:hover {
+    background-color: var(--principalSource);
+    color: #1E1E1E;
+    transform: none;
+}

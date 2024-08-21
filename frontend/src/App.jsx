@@ -1,5 +1,3 @@
-import React from 'react';
-
 import "./global.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
@@ -27,4 +25,3 @@ export function App() {
     </BrowserRouter>
   )
 }
-
