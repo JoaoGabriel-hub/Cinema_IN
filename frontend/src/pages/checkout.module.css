@@ -1,0 +1,91 @@
+.asideassentos {
+    width: 22.4rem;
+    height: 48.75rem;
+    margin-bottom: 6rem;
+}
+
+.filme {
+    width: 22.4rem;
+    height: 14.5rem;
+    display: flex;
+    gap: 1rem;
+    padding: 3rem;
+    background-color: #00264D;
+}
+
+.imgfilme {
+    width: 7.013rem;
+    height: 12.5rem;
+}
+
+.dadossessao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dadossessao h3 {
+    color: var(--cinzaBranco);
+    font-family: "Roboto";
+    font-size: 1.225rem;
+    
+}
+
+.dadossessao div {
+    display: flex;
+    gap: 1rem;
+}
+
+.tiposessao {
+    width: 3.415rem;
+    height: 1.531rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--callToActionSource);
+    border-radius: .2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: "Roboto";
+    color: #1E1E1E;
+}
+
+.fundoassentos {
+    width: 22.4rem;
+    height: 34.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cinza100);
+    padding: 2rem;
+}
+
+.fundoassentos div {
+    display: flex;
+    align-items: baseline;
+}
+
+.fundoassentos h2 {
+    margin: 0;
+    font-family: 'Poppins';
+    font-size: 1rem;
+    margin-left: .3rem;
+}
+
+.assentos {
+    width: 16.875rem;
+    height: 22rem;
+    background-color: #CCCCCC;
+}
+
+.fundoassentos button {
+    width: 7.438rem;
+    height: 3rem;
+    background-color: var(--callToActionSource);
+    color: var(--cinza100);
+    border-radius: .5rem;
+    margin-top: 3rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+}
