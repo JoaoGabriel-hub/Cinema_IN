@@ -1,9 +1,15 @@
-import styles from "./assentos.module.css"
+import { useState } from 'react';
+import styles from "./assentos.module.css";
 
-export default function Assentos() {
+export default function Assentos({ onSeatSelect }) {
     const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const seatsPerRow = 18;
-    
+
+    const handleSeatChange = (event) => {
+        const seatId = event.target.value;
+        onSeatSelect(seatId, event.target.checked);
+    };
+
     return (
         <section className={styles.cinema}>
             <img src="src/assets/Tela.svg" alt="Tela" />
@@ -23,10 +29,17 @@ export default function Assentos() {
                 <div className={styles.seatContainer}>
                     {rows.map((row) => (
                         <div key={row} className={styles.seatRow}>
-                            {Array.from({length: seatsPerRow}, (_, index) => {
+                            {Array.from({ length: seatsPerRow }, (_, index) => {
                                 const seatId = `${row}${index + 1}`;
                                 return (
-                                    <input type='checkbox' key={seatId} className={styles.seatButton} />
+                                    <label key={seatId} className={styles.seatLabel}>
+                                        <input
+                                            type='checkbox'
+                                            value={seatId}
+                                            className={styles.seatButton}
+                                            onChange={handleSeatChange}
+                                        />
+                                    </label>
                                 );
                             })}
                         </div>

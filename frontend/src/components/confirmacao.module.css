@@ -1,0 +1,96 @@
+.open {
+    width: 7.438rem;
+    height: 3rem;
+    background-color: var(--callToActionSource);
+    color: var(--cinza100);
+    border-radius: .5rem;
+    margin-top: 3rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+}
+
+/* Overlay cobrindo toda a tela */
+.modal {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Conteúdo do modal */
+.content {
+    width: 50rem;
+    height: 22.188rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 2rem 3rem 0;
+    text-align: left;
+    background-color: var(--callToActionSource);
+    border-radius: 1rem;
+    color: var(--texto50);
+    box-shadow: 0 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
+}
+
+/* Texto dentro do modal */
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.text h1 {
+    font-family: "Nunito Sans";
+    font-size: 3rem;
+    margin-bottom: 0;
+}
+
+.text h2 {
+    margin-bottom: 4rem;
+    font-family: "Roboto";
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--cinza50);
+    letter-spacing: 4%;
+    line-height: 1.758rem;
+}
+
+.buttons {
+    width: 35.609rem;
+    height: 6.625rem;
+    display: flex;
+    margin: auto;
+    gap: 3rem;
+}
+
+.close {
+    width: 16.424rem;
+    height: 6.625rem;
+    background-color: var(--cancel700);
+    color: var(--cinza50);
+    font-family: "Poppins";
+    font-size: 2.208rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+.confirm {
+    width: 16.424rem;
+    height: 6.625rem;
+    background-color: var(--confirm400);
+    color: var(--cinza50);
+    font-family: "Poppins";
+    font-size: 2.208rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    padding: 0;
+    margin: 0;
+}
+

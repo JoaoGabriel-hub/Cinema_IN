@@ -77,13 +77,47 @@
     margin-left: .3rem;
 }
 
+.lugares {
+    width: 18rem;
+    height: 22rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #CCCCCC;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .assentos {
     width: 16.875rem;
-    height: 22rem;
+    display: flex;
+    flex-direction: column;
+    padding: .5rem 1.3rem;
     background-color: #CCCCCC;
 }
 
-.fundoassentos button {
+.assentos div {
+    width: 13.813rem;
+    height: .1rem;
+    margin-bottom: .2rem;
+    background-color: #1E1E1E;
+}
+
+.assentos h2 {
+    font-weight: 600;
+    line-height: 1.5rem;
+}
+
+.userInfo {
+    width: 13.813rem;
+    height: 1.375rem;
+    border-radius: 0.125rem 0 0 0.125rem;
+    border-left: .4rem solid var(--principalSource);
+    background-color: var(--cinza50);
+    padding: 0.5rem;
+    box-shadow: none;
+}
+
+.confirm {
     width: 7.438rem;
     height: 3rem;
     background-color: var(--callToActionSource);

@@ -43,6 +43,7 @@
     width: 1.5rem;
     height: 1.5rem;
     padding: 0;
+    margin-bottom: .79rem;
     border-radius: .5rem .5rem 0 0;
     border: solid var(--principal800) .188rem;
     background-color: #141414;
