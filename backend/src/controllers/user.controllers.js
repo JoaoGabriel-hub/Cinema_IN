@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const { User } = require('../models/models');  // Certifique-se de desestruturar corretamente
+const { User } = require('../models/models');  
 
 
 const registerUser = async (req, res) => {
@@ -21,10 +21,10 @@ const registerUser = async (req, res) => {
             return res.status(400).json({ message: 'Nome de usuário já existente.' });
         }
 
-        // Criptografe a senha
+        // Criptografando a senha
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Crie o novo usuário
+        // Criando o novo usuário
         const user = await User.create({
             name,
             lastName,
@@ -35,7 +35,6 @@ const registerUser = async (req, res) => {
             password: hashedPassword,
         });
 
-        // Resposta de sucesso
         return res.status(201).json(user);
     } catch (error) {
         console.error(error);
