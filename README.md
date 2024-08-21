@@ -26,7 +26,7 @@ Um projeto para o Processo Seletivo da empresa **IN Junior** (Empresa Júnior de
 `yarn`
 
 4. Por fim, inicie o servidor através dos seguintes comandos:<br/>
-`cd backend`
+`cd backend`<br/>
 `yarn dev`
 
 
