@@ -1,0 +1,54 @@
+.banner {
+    height: 24.063rem;
+    display: flex;
+    padding: 2.813rem;
+    background-image: linear-gradient(to bottom, var(--sombraSource) 90%, transparent);
+    margin-bottom: 3rem;
+    color: var(--cinzaBranco);
+}
+
+.capadofilme {
+    width: 14.375rem;
+    height: 21.25rem;
+    border-radius: .5rem;
+    margin-right: 3rem;
+}
+
+.dadosfilme {
+    max-width: 60vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.topo {
+    display: flex;
+}
+
+.idade {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 0.417rem;
+}
+
+.banner h1 {
+    text-align: left;
+    font-size: 3rem;
+    margin: 0 3rem 0 0;
+}
+
+.banner h2 {
+    color: var(--cinza200);
+    font-size: 1.5rem;
+}
+
+.banner p {
+    color: var(--cinza50);
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.lugar {
+    display: flex;
+    gap: 5rem;
+}
