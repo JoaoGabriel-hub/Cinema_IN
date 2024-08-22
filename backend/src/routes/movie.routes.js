@@ -7,16 +7,7 @@ const movieRoutes = express.Router();
 
 const movieController = require('../controllers/movie.controllers');
 
-movieRoutes.get('/genre', movieController.getMovie);
-
-app.get('/', async (req, res) => {
-    try {
-        const movies = await Movie.findAll();
-        res.json(movies);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
+movieRoutes.get('/', movieController.getMovie);
 
 
 // Exportação
