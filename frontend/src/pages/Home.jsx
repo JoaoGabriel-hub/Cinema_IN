@@ -25,45 +25,50 @@ export function Home() {
                         <div className={style.emcartaz}>
                             <img src="" className={style.cartaz} />
                             <h2>Título do filme</h2>
-                            <button className={style.sessoes}>
-                                SESSÕES DISPONÍVEIS
-                                <NavLink to="/sessoes"></NavLink>
-                            </button>
+                            <NavLink to="/sessoes">
+                                <button className={style.sessoes}>
+                                    SESSÕES DISPONÍVEIS
+                                </button>
+                            </NavLink>
                         </div>
                         <div className={style.emcartaz}>
                             <img src="" className={style.cartaz} />
                             <h2>Título do filme</h2>
-                            <button className={style.sessoes}>
-                                SESSÕES DISPONÍVEIS
-                                <NavLink to="/sessoes"></NavLink>
-                            </button>
+                            <NavLink to="/sessoes">
+                                <button className={style.sessoes}>
+                                    SESSÕES DISPONÍVEIS
+                                </button>
+                            </NavLink>
                         </div>
                         <div className={style.emcartaz}>
                             <img src="" className={style.cartaz} />
                             <h2>Título do filme</h2>
-                            <button className={style.sessoes}>
-                                SESSÕES DISPONÍVEIS
-                                <NavLink to="/sessoes"></NavLink>
-                            </button>
+                            <NavLink to="/sessoes">
+                                <button className={style.sessoes}>
+                                    SESSÕES DISPONÍVEIS
+                                </button>
+                            </NavLink>
                         </div>
                         <div className={style.emcartaz}>
                             <img src="" className={style.cartaz} />
                             <h2>Título do filme</h2>
-                            <button className={style.sessoes}>
-                                SESSÕES DISPONÍVEIS
-                                <NavLink to="/sessoes"></NavLink>
-                            </button>
+                            <NavLink to="/sessoes">
+                                <button className={style.sessoes}>
+                                    SESSÕES DISPONÍVEIS
+                                </button>
+                            </NavLink>
                         </div>
                         <div className={style.emcartaz}>
                             <img src="" className={style.cartaz} />
                             <h2>Título do filme</h2>
-                            <button className={style.sessoes}>
+                            <NavLink to="/sessoes">
+                                <button className={style.sessoes}>
                                 SESSÕES DISPONÍVEIS
-                                <NavLink to="/sessoes"></NavLink>
-                            </button>
+                                </button>
+                            </NavLink>
                         </div>
                     </div>
-                    <NavLink to="/filmes">Ver mais</NavLink>
+                    <NavLink to="/filmes" className={style.vermaisfilmes}>Ver mais</NavLink>
                 </footer>
             </div>
             <Footer />

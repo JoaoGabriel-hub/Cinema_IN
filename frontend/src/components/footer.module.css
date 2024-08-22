@@ -1,6 +1,6 @@
 .footer {
     width: 100%;
-    height: 21.25rem;
+    height: 20.25rem;
     background-color: var(--sombraSource);
     display: flex;
     flex-direction: column;
@@ -38,7 +38,6 @@
     height: 1.875rem;
     display: flex;
     justify-content: space-between;
-    margin-top: -1.7rem;
 }
 
 button {
@@ -71,6 +70,5 @@ iframe {
     font-family: "Roboto", 'Times New Roman', Times, serif;
     color: var(--cinza100);
     text-align: center;
-    margin-top: 1rem;
     padding: .5rem;
 }

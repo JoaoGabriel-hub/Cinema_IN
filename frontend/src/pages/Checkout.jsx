@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 
 import styles from "./checkout.module.css";
 import Assentos from "../components/Assentos";
-import Confirmação from '../components/Confirmação';
+import Confirmacao from '../components/Confirmação'; // Importa o componente Confirmacao
 
 export function Checkout() {
     const location = useLocation();
@@ -14,6 +14,7 @@ export function Checkout() {
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [seatInfo, setSeatInfo] = useState({});
     const [isFormValid, setIsFormValid] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar o modal
 
     const handleSeatSelect = (seatId, isSelected) => {
         setSelectedSeats((prevSeats) =>
@@ -39,7 +40,7 @@ export function Checkout() {
             ...prevInfo,
             [seatId]: { ...prevInfo[seatId], [name]: value }
         }));
-        validateForm(); // Adicione esta linha para validar o formulário sempre que um campo mudar
+        validateForm();
     };
     
 
@@ -51,15 +52,17 @@ export function Checkout() {
         setIsFormValid(isValid);
     };
 
-    
-
     const handleConfirmClick = () => {
         if (isFormValid) {
             console.log("Formulário válido e confirmado!");
-            // Aqui você pode adicionar qualquer lógica adicional que queira executar quando o formulário for válido
+            setIsModalOpen(true); // Abre o modal quando o botão é clicado
         } else {
             alert("Preencha todos os campos obrigatórios!");
         }
+    };
+
+    const handleModalClose = () => {
+        setIsModalOpen(false); // Fecha o modal
     };
 
     useEffect(() => {
@@ -114,20 +117,23 @@ export function Checkout() {
                                         </div>
                                     ))}
                                 </div>
-                                
-                                <Confirmação onClick={handleConfirmClick} disabled={!isFormValid} />
-                           
+                                <button onClick={handleConfirmClick} disabled={!isFormValid} className={styles.botaoconfirma}>
+                                     CONFIRMAR 
+                                </button>
                             </div>
                         </div>
                     ) : (
                         <p>Erro!</p>
                     )}
                 </div>
+                
                 <Assentos onSeatSelect={handleSeatSelect} />
             </div>
             <Footer />
+
+            {/* Adiciona o componente de confirmação com a lógica de abertura e fechamento */}
+            {isModalOpen && <Confirmacao onClose={handleModalClose} />}
         </>
     );
-    
 }
 

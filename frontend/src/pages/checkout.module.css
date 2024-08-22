@@ -128,3 +128,21 @@
     font-family: 'Poppins';
     font-size: 1rem;
 }
+
+.botaoconfirma {
+    width: 7.438rem;
+    height: 3rem;
+    background-color: var(--callToActionSource);
+    color: var(--cinza100);
+    border-radius: .5rem;
+    margin-top: 3rem;
+    font-family: 'Poppins';
+    font-size: 1rem;
+}
+
+.botaoconfirma:disabled {
+    color: var(--cinza200);
+    opacity: 60%;
+    cursor: not-allowed;
+    transform: none;
+}
