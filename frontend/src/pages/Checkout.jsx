@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+
 import styles from "./checkout.module.css";
 import Assentos from "../components/Assentos";
 import Confirmação from '../components/Confirmação';
@@ -37,7 +39,9 @@ export function Checkout() {
             ...prevInfo,
             [seatId]: { ...prevInfo[seatId], [name]: value }
         }));
+        validateForm(); // Adicione esta linha para validar o formulário sempre que um campo mudar
     };
+    
 
     const validateForm = () => {
         const isValid = selectedSeats.every(seatId => {
@@ -47,14 +51,20 @@ export function Checkout() {
         setIsFormValid(isValid);
     };
 
+    
+
     const handleConfirmClick = () => {
         if (isFormValid) {
-            // Lógica para confirmar a seleção
             console.log("Formulário válido e confirmado!");
+            // Aqui você pode adicionar qualquer lógica adicional que queira executar quando o formulário for válido
         } else {
             alert("Preencha todos os campos obrigatórios!");
         }
     };
+
+    useEffect(() => {
+        validateForm();
+    }, [selectedSeats, seatInfo]);
 
     return (
         <>
@@ -89,7 +99,6 @@ export function Checkout() {
                                                 name="name"
                                                 value={seatInfo[seatId]?.name || ''}
                                                 onChange={(e) => handleInputChange(seatId, e)}
-                                                onBlur={validateForm}
                                                 className={styles.userInfo}
                                                 required
                                             />
@@ -99,7 +108,6 @@ export function Checkout() {
                                                 name="cpf"
                                                 value={seatInfo[seatId]?.cpf || ''}
                                                 onChange={(e) => handleInputChange(seatId, e)}
-                                                onBlur={validateForm}
                                                 className={styles.userInfo}
                                                 required
                                             />
@@ -107,7 +115,7 @@ export function Checkout() {
                                     ))}
                                 </div>
                                 
-                                    <Confirmação onClick={handleConfirmClick} disabled={!isFormValid}/>
+                                <Confirmação onClick={handleConfirmClick} disabled={!isFormValid} />
                            
                             </div>
                         </div>
@@ -120,5 +128,6 @@ export function Checkout() {
             <Footer />
         </>
     );
+    
 }
 

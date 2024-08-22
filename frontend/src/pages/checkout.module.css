@@ -117,7 +117,7 @@
     box-shadow: none;
 }
 
-.confirm {
+.areaconfirmar{
     width: 7.438rem;
     height: 3rem;
     background-color: var(--callToActionSource);
