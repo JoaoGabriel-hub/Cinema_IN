@@ -1,4 +1,5 @@
 import style from "./cardfilme.module.css"
+import {NavLink} from 'react-router-dom'
 
 export function CardFilme() {
     return(
@@ -22,7 +23,9 @@ export function CardFilme() {
                         </p>
                     </div>
                 </div>
+                <NavLink to='/sessoes'>
                    <button> VER SESSÕES </button>
+                </NavLink>
             </div>
         </div>
     )
