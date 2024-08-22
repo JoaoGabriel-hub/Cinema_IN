@@ -31,13 +31,17 @@ app.post('/movies', async (req, res) => {
 });
 
 // Leitura de Sessões
-app.get('/sessions', (req, res) => {
-    db.all('SELECT * FROM sessions', [], (err, rows) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
+app.get('/sessions/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const sessions = await Session.findAll({ where: { id } });
+        if (sessions.length === 0) {
+            return res.status(404).json({ error: 'No sessions found for the given id' });
         }
-        res.json(rows);
-    });
+        res.json(sessions);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
 
 // Criação de Sessão com assentos automáticos
