@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const db = require('./data');
 
 const app = express();
 app.use(bodyParser.json());
 
 // Leitura de Filmes
-const { Movie } = require('./src/models/models'); 
+const { Movie } = require('./models'); 
 
 app.get('/movies', async (req, res) => {
     try {
@@ -29,68 +30,69 @@ app.post('/movies', async (req, res) => {
     }
 });
 
-// Importar o modelo Session
-const { Session } = require('./src/models/models');
-
 // Leitura de Sessões
-app.get('/sessions', async (req, res) => {
+app.get('/sessions/:id', async (req, res) => {
+    const { id } = req.params;
     try {
-        const sessions = await Session.findAll();
+        const sessions = await Session.findAll({ where: { id } });
+        if (sessions.length === 0) {
+            return res.status(404).json({ error: 'No sessions found for the given id' });
+        }
         res.json(sessions);
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 });
 
-// Rota para criar uma nova sessão
-app.post('/sessions', async (req, res) => {
+// Criação de Sessão com assentos automáticos
+app.post('/sessions', (req, res) => {
     const { movieId, time } = req.body;
 
     if (!movieId || !time) {
-        return res.status(400).json({ error: 'Não foi possivel resgatar o movieId ou o time.' });
+        return res.status(400).json({ error: 'FilmeId e Horario são obrigatórios' });
     }
 
-    try {
-        // Criar uma nova sessão
-        const newSession = await Session.create({ movieId, time });
+    db.run('INSERT INTO sessoes (filmeId, horario) VALUES (?, ?)', [movieId, time], function (err) {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
 
-        // Criar assentos automáticos para a sessão
-        const seats = await criarAssentos(newSession.id);
+        const sessionId = this.lastID;
+        const seats = criarAssentos(sessionId);
 
-        res.status(201).json({ id: newSession.id, movieId, time, seats });
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
+        res.status(201).json({ id: sessionId, movieId, time, seats });
+    });
 });
 
-// Importar o modelo Seat
-const { Seat } = require('./src/models/models');
-
 // Função para criar assentos automaticamente
-async function criarAssentos(sessionId) {
+function criarAssentos(sessionId) {
     const seats = [];
-    const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+    const row = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 
-    rows.forEach(row => {
+    rows.forEach(rows => {
         for (let number = 1; number <= 18; number++) {
-            seats.push({ sessionId, row, number, ocupado: false });
+            db.run('INSERT INTO seats (sessionId, row, number) VALUES (?, ?, ?)', 
+                [sessionId, row, number]);
+            seats.push({ row, number, ocupado: false });
         }
     });
-
-    // Inserir todos os assentos de uma vez
-    await Seat.bulkCreate(seats);
 
     return seats;
 }
 
 // Leitura de Assentos por Sessão
-app.get('/sessoes/:id/assentos', async (req, res) => {
+app.get('/sessoes/:id/assentos', (req, res) => {
     const sessionId = req.params.id;
-
-    try {
-        const seats = await Seat.findAll({ where: { sessionId } });
-        res.json(seats);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
+    db.all('SELECT * FROM assentos WHERE sessionId = ?', [sessionId], (err, rows) => {
+        if (err) {
+            return res.status(500).json({ error: err.message });
+        }
+        res.json(rows);
+    });
 });
+
+const port = 3000;
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
+});
+
