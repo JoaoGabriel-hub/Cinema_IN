@@ -2,21 +2,11 @@ import React, { useState } from 'react';
 import style from "./botregistrar.module.css";
 import { NavLink } from "react-router-dom";
 
-export default function BotRegistrar({ disabled }) {
-    const [modal, setModal] = useState(false);
-
-    const toggleModal = () => {
-        if (!disabled) {
-            setModal(!modal);
-        }
-    };
+export default function BotRegistrar({ onClick, formValues, disabled }) {
+    const [modal] = useState(true);
 
     return (
         <div>
-            <button onClick={toggleModal} className={style.open} disabled={disabled}>
-                REGISTRAR
-            </button>
-          
             {modal && (
                 <div className={style.modal}>
                     <div className={style.overlay}></div>
@@ -24,7 +14,7 @@ export default function BotRegistrar({ disabled }) {
                         <div>
                             <NavLink to='/login'>
                                 <button className={style.close}>
-                                    <img src="src/assets/Botao.svg" alt="Fechar"/>
+                                    <img src="src/assets/Botao.svg" alt="Botão de fechar" />
                                 </button>
                             </NavLink>
                         </div>
@@ -32,11 +22,10 @@ export default function BotRegistrar({ disabled }) {
                             <h1>Cadastro Criado!</h1>
                             <h2>Bem-Vindo à Nossa Comunidade Cinematográfica!</h2>
                             <p>
-                                Obrigado por se juntar a nós na nossa comunidade 
-                                cinematográfica. Sua jornada para uma experiência 
+                                Obrigado por se juntar a nós na nossa comunidade
+                                cinematográfica. Sua jornada para uma experiência
                                 cinematográfica única começa agora. <br /><br />
-                                Você será redirecionado em instantes 
-                                para página de login em instantes.
+                                Você será redirecionado para página de login em instantes.
                             </p>
                         </div>
                     </div>
@@ -45,3 +34,4 @@ export default function BotRegistrar({ disabled }) {
         </div>
     );
 }
+

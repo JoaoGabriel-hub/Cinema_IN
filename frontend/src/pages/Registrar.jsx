@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Header } from "../components/Header"; 
 import { Footer } from "../components/Footer"; 
 import style from "./registrar.module.css"; 
-import BotRegistrar from "../components/BotRegistrar.jsx"; 
+import { NavLink } from 'react-router-dom'; // Certifique-se de importar NavLink corretamente
 
 export function Registrar() { 
     const [formValues, setFormValues] = useState({ 
@@ -17,7 +17,7 @@ export function Registrar() {
     }); 
 
     const [isFormValid, setIsFormValid] = useState(false); 
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isModalVisible, setIsModalVisible] = useState(false); 
 
     useEffect(() => { 
         const allFieldsFilled = Object.values(formValues).every(value => value.trim() !== ''); 
@@ -34,6 +34,12 @@ export function Registrar() {
 
     const handleSubmit = async () => {
         console.log("handleSubmit chamado");
+
+        const senhaValida = /^(?=.*[!@_#])[A-Za-z\d!@_#]{7,}$/.test(formValues.senha);
+        if (!senhaValida) {
+            alert('A senha deve ter no mínimo 7 caracteres e incluir pelo menos um símbolo (!, @, _, #, etc).');
+            return;
+        }
 
         if (formValues.senha !== formValues.confirmarSenha) {
             alert('Senhas diferentes, por favor, digite a mesma senha.');
@@ -60,7 +66,7 @@ export function Registrar() {
             const data = await response.json();
             if (response.ok) {
                 console.log('Usuário registrado com sucesso:', data);
-                alert('Usuário registrado com sucesso!');
+                setIsModalVisible(true); // Exibe o modal após o registro bem-sucedido
             } else {
                 console.log('Erro ao registrar usuário:', data.message);
                 alert(`Erro: ${data.message}`);
@@ -69,7 +75,7 @@ export function Registrar() {
             console.error('Erro na requisição:', error);
             alert('Erro na requisição. Tente novamente mais tarde.');
         }
-    }; 
+    };
 
     return ( 
         <> 
@@ -163,15 +169,41 @@ export function Registrar() {
                     />
                 
                     <div className={style.botaoregistrar}>
-                    <button onClick={handleSubmit} disabled={!isFormValid}>Registrar</button>
-
+                        <button onClick={handleSubmit} disabled={!isFormValid}>Registrar</button>
                     </div>
                 </div>
             </div>
+
+            {isModalVisible && (
+                <div className={style.modal}>
+                    <div className={style.overlay}></div>
+                    <div className={style.content}>
+                        <div>
+                            <NavLink to='/login'>
+                                <button className={style.close}>
+                                    <img src="src/assets/Botao.svg" alt="Botão de fechar" />
+                                </button>
+                            </NavLink>
+                        </div>
+                        <div className={style.text}>
+                            <h1>Cadastro Criado!</h1>
+                            <h2>Bem-Vindo à Nossa Comunidade Cinematográfica!</h2>
+                            <p>
+                                Obrigado por se juntar a nós na nossa comunidade
+                                cinematográfica. Sua jornada para uma experiência
+                                cinematográfica única começa agora. <br /><br />
+                                Você será redirecionado para página de login em instantes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <Footer />
         </>
     );
 }
+
 
 
 
