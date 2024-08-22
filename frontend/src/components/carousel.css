@@ -51,18 +51,12 @@
     margin-left: 5.313rem;
   }
 
-  .botoes-swiper {
-    position: relative;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 1.7rem;
-    top: 21.8rem;
-  }
-
   .next {
     width: 5.188rem; 
     height: 5.188rem;
+    position: absolute; 
+    left: 82rem;
+    margin-top: -18.8rem;
   }
 
   .next:hover {
@@ -77,6 +71,9 @@
   .prev {
     width: 5.188rem; 
     height: 5.188rem;
+    position: absolute; 
+    left: 1.8rem;
+    margin-top: 13.6rem;
   }
 
   .prev:hover {
@@ -88,10 +85,3 @@
     height: 5.188rem;
   }
   
-  @media (min-width: 1600px) {
-
-    .botoes-swiper{
-      padding: 0px 7.4vw;
-    }
-    
-  }
