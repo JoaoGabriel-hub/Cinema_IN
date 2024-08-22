@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Leitura de Filmes
-const { Movie } = require('./models'); // Certifique-se de ajustar o caminho para o seu modelo
+const { Movie } = require('./models'); 
 
 app.get('/movies', async (req, res) => {
     try {
