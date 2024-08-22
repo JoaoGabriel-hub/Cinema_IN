@@ -31,12 +31,42 @@ export function Registrar() {
         });
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        console.log("handleSubmit chamado");
+
         if (formValues.senha !== formValues.confirmarSenha) {
             alert('Senhas diferentes, por favor, digite a mesma senha.');
-        } else {
-            // Lógica para registrar o usuário ou prosseguir com o envio do formulário
-            console.log("Formulário enviado com sucesso!");
+            return;
+        }
+    
+        try {
+            const response = await fetch('http://localhost:3000/users/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formValues.nome,
+                    lastName: formValues.sobrenome,
+                    cpf: formValues.cpf,
+                    birthday: formValues.dataNascimento,
+                    username: formValues.nomeUsuario,
+                    email: formValues.email,
+                    password: formValues.senha,
+                }),
+            });
+    
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Usuário registrado com sucesso:', data);
+                alert('Usuário registrado com sucesso!');
+            } else {
+                console.log('Erro ao registrar usuário:', data.message);
+                alert(`Erro: ${data.message}`);
+            }
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+            alert('Erro na requisição. Tente novamente mais tarde.');
         }
     };
 
@@ -132,7 +162,8 @@ export function Registrar() {
                     />
                 
                     <div className={style.botaoregistrar}>
-                        <BotRegistrar onClick={handleSubmit} disabled={!isFormValid} />
+                    <button onClick={handleSubmit} disabled={!isFormValid}>Registrar</button>
+
                     </div>
                 </div>
             </div>
