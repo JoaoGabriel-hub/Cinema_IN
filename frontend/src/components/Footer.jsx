@@ -44,10 +44,12 @@ export function Footer() {
                     
                     <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=720&amp;height=600&amp;hl=en&amp;q=Universidade%20federal%20fluminense%20instituto%20de%20computa%C3%A7%C3%A3o+(Injunior)&amp;t=&amp;z=18&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                 </div>
-                <div className={style.copyrigth}>
-                    © Copyright 2023. IN Junior. Todos os direitos reservados. Niterói, Brasil.
-                </div>
             </div>
+
+            <div className={style.copyrigth}>
+                © Copyright 2023. IN Junior. Todos os direitos reservados. Niterói, Brasil.
+            </div>
+            
         </div>
     )
 
