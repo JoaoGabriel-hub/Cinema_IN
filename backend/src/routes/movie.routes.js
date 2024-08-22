@@ -8,7 +8,7 @@ const movieRoutes = express.Router();
 const movieController = require('../controllers/movie.controllers');
 
 movieRoutes.get('/', movieController.getMovie);
-
+movieRoutes.post('/', movieController.postMovie);
 
 // Exportação
 module.exports = movieRoutes;
