@@ -12,6 +12,25 @@ const getSession = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+// Importar o modelo Seat
+const { Seat } = require('../models/models');
+
+// Função para criar assentos automaticamente
+async function criarAssentos(sessionId) {
+    const seats = [];
+    const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+
+    rows.forEach(row => {
+        for (let number = 1; number <= 18; number++) {
+            seats.push({ sessionId, row, number, ocupado: false });
+        }
+    });
+
+    // Inserir todos os assentos de uma vez
+    await Seat.bulkCreate(seats);
+
+    return seats;
+}
 
 const postSession = async (req, res) => {
     const { movieId, time } = req.body;
