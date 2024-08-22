@@ -16,33 +16,33 @@ const getSession = async (req, res) => {
 const { Seat } = require('../models/models');
 
 // Função para criar assentos automaticamente
-async function criarAssentos(sessionId) {
-    const seats = [];
+async function criarAssentos(sessionId, price) {
     const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+    const seats = [];
 
     rows.forEach(row => {
         for (let number = 1; number <= 18; number++) {
-            seats.push({ sessionId, row, number, ocupado: false });
+            seats.push({ sessionId, row, number, price, ocupado: false });
         }
     });
 
     // Inserir todos os assentos de uma vez
-    await Seat.bulkCreate(seats);
-
-    return seats;
-}
+    Seat.bulkCreate(seats);
+};
 
 const postSession = async (req, res) => {
-    const { movieId, time, city, neighborhood, type, sessionId } = req.body;
+    const { time, city, neighborhood, type, sessionId } = req.body;
+    const { id: movieId } = req.params;
+    const { price } = req.body; 
     
     try {
         // Criar uma nova sessão
         const newSession = await Session.create({ movieId, time, city, neighborhood, type, sessionId });
 
         // Criar assentos automáticos para a sessão
-        const seats = await criarAssentos(newSession.sessionId);
+        const seats = await criarAssentos(newSession.sessionId, price);
 
-        res.status(201).json({ id: newSession.sessionId, movieId, time, city, neighborhood, type, seats });
+        res.status(201).json(newSession);
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

@@ -80,18 +80,15 @@ const Seat = sequelize.define("Seat", {
         type: DataTypes.STRING,
         allowNull: false
     },
-
     price: {
         type: DataTypes.FLOAT,
         allowNull: false
     },
     userCpf: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.STRING
     },
     userName: {
-    type: DataTypes.STRING,
-    allowNull: false
+    type: DataTypes.STRING
     },
     sessionId: {
         type: DataTypes.UUIDV4
