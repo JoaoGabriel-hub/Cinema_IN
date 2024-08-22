@@ -6,13 +6,28 @@ const app = express();
 app.use(bodyParser.json());
 
 // Leitura de Filmes
-app.get('/movies', (req, res) => {
-    db.all('SELECT * FROM movies', [], (err, rows) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        res.json(rows);
-    });
+const { Movie } = require('./models'); // Certifique-se de ajustar o caminho para o seu modelo
+
+app.get('/movies', async (req, res) => {
+    try {
+        const movies = await Movie.findAll();
+        res.json(movies);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Rota para criar um novo filme
+app.post('/movies', async (req, res) => {
+    const { title, imageUrl, synopsis, genre, rating, director } = req.body;
+
+    try {
+        // Criar um novo filme
+        const newMovie = await Movie.create({ title, imageUrl, synopsis, genre, rating, director });
+        res.status(201).json(newMovie);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
 
 // Leitura de Sessões
