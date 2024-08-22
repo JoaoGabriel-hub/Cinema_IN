@@ -20,15 +20,21 @@ export function Footer() {
                             <h2>Fale conosco</h2>
                             <p>contato@injunior.com</p>
                             <div className={style.buttons}>
-                                <button>
-                                    <img src="src/assets/Icone-Instagram.svg" alt="Instagram" />
-                                </button>
-                                <button>
-                                    <img src="src/assets/Icone-Facebook.svg" alt="Facebook" />
-                                </button>
+                                <a href="https://www.instagram.com/injunioruff/">
+                                    <button>
+                                        <img src="src/assets/Icone-Instagram.svg" alt="Instagram" />
+                                    </button>
+                                </a>
+                                <a href="https://www.facebook.com/injunioruff/">
+                                    <button>
+                                        <img src="src/assets/Icone-Facebook.svg" alt="Facebook" />
+                                    </button>
+                                </a>
+                                <a href="https://www.linkedin.com/company/in-junior/?originalSubdomain=br">
                                 <button>
                                     <img src="src/assets/Icone-Linkedin.svg" alt="Linkedin" />
                                 </button>
+                                </a>
                             </div>
                         </div>
                     </div>
