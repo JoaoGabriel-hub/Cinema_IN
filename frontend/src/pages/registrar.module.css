@@ -45,4 +45,13 @@
 
 .botaoregistrar {
     margin-top: 2rem;
+    width: 9.125rem;
+    height: 2.75rem;
+    background-color: var(--principal400);
+    border: none;
+    border-radius: .625rem;
+    color: var(--texto50);
+    font-family: "Roboto";
+    font-size: 1.5rem;
+    box-shadow: 0 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
 }
