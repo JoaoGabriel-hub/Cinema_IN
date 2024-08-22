@@ -8,7 +8,7 @@ const sessionRoutes = express.Router();
 const sessionController = require('../controllers/sessions.controllers');
 
 sessionRoutes.get('/:id', sessionController.getSession);
-sessionRoutes.post('/', sessionController.postSession);
+sessionRoutes.post('/:id', sessionController.postSession);
 
 // Exportação
 module.exports = sessionRoutes;
