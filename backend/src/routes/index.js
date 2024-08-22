@@ -5,10 +5,14 @@ const router = express.Router();
 const filterRoutes = require('./filter.routes');
 const userRoutes = require('./user.routes');
 const movieRoutes = require('./movie.routes')
+const sessionRoutes = require('./session.routes');
+const seatRoutes = require('./seat.routes');
 
 // Usar as rotas individuais
 router.use('/filters', filterRoutes);
 router.use('/users', userRoutes);
 router.use('/movies', movieRoutes);
+router.use('/sessions', sessionRoutes);
+router.use('/seats', seatRoutes);
 // Exportar o roteador centralizado
 module.exports = router;
