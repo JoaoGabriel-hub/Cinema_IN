@@ -1,6 +1,7 @@
 .page {
     display: flex;
-    margin: 2rem;
+    margin: 2rem 0;
+    justify-content: center;
     gap: 1rem;
 }
 

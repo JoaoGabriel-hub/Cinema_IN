@@ -13,7 +13,7 @@ const items = [
 ];
 
 export function Carousel() {
-  const swiperRef = useRef(null); // Cria a referência para o Swiper
+  const swiperRef = useRef(null); 
 
   const handleNext = () => {
     if (swiperRef.current) {
@@ -29,11 +29,17 @@ export function Carousel() {
 
   return (
     <div className="slider-container">
-      <button onClick={handlePrev} className='prev'>
-        <img src="src/assets/Left.svg" alt="Anterior" />
-      </button>
+      <div className="botoes-swiper">
+        <button onClick={handlePrev} className='prev'>
+          <img src="src/assets/Left.svg" alt="Anterior" />
+        </button>
+        <button onClick={handleNext} className='next'>
+          <img src="src/assets/Right.svg" alt="Próximo" />
+        </button>
+      </div>
+      
       <Swiper
-        ref={swiperRef} // Passa a referência para o Swiper
+        ref={swiperRef} 
         slidesPerView={1}
         spaceBetween={30}
         loop={true}
@@ -56,9 +62,7 @@ export function Carousel() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <button onClick={handleNext} className='next'>
-        <img src="src/assets/Right.svg" alt="Próximo" />
-      </button>
+      
     </div>
   );
 }
