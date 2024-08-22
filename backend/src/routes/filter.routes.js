@@ -5,8 +5,8 @@ const filterRoutes = express.Router();
 const filterController = require('../controllers/filter.controller');
 
 // Rotas
-filterRoutes.get('/genre', filterController.getGenres);
-filterRoutes.get('/moviesfilter', filterController.getMoviesByGenreAndRating);
+filterRoutes.get('/', filterController.getGenres);
+filterRoutes.get('/hr', filterController.getMoviesByGenreAndRating);
 
 // Exportação
 module.exports = filterRoutes;
