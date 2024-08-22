@@ -29,9 +29,14 @@ export function Carousel() {
 
   return (
     <div className="slider-container">
-      <button onClick={handlePrev} className='prev'>
-        <img src="src/assets/Left.svg" alt="Anterior" />
-      </button>
+      <div className='botoes'>
+        <button onClick={handlePrev} className='prev'>
+          <img src="src/assets/Left.svg" alt="Anterior" />
+        </button>
+        <button onClick={handleNext} className='next'>
+          <img src="src/assets/Right.svg" alt="Próximo" />
+        </button> 
+      </div>
       <Swiper
         ref={swiperRef} // Passa a referência para o Swiper
         slidesPerView={1}
@@ -56,9 +61,7 @@ export function Carousel() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <button onClick={handleNext} className='next'>
-        <img src="src/assets/Right.svg" alt="Próximo" />
-      </button>
+      
     </div>
   );
 }
