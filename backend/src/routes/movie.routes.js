@@ -4,7 +4,12 @@ const movieRoutes = express.Router();
 // Inclusão dos middlewares
 
 // Inclusão dos Controllers
-app.get('/movies', async (req, res) => {
+
+const movieController = require('../controllers/movie.controllers');
+
+movieRoutes.get('/genre', movieController.getMovie);
+
+app.get('/', async (req, res) => {
     try {
         const movies = await Movie.findAll();
         res.json(movies);
@@ -12,5 +17,7 @@ app.get('/movies', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+
 // Exportação
 module.exports = movieRoutes;
