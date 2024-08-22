@@ -1,0 +1,48 @@
+.corporegistro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 7rem;
+}
+
+.apresentacao {
+    width: 59em;
+    margin-bottom: 3rem;
+    color: var(--cinza50);
+    gap: 1rem;
+}
+
+.apresentacao h1 {
+    text-align: left;
+    font-size: 3rem;
+}
+
+.apresentacao h2 {
+    text-align: left;
+    font-family: 'Roboto';
+    font-size: 1.5rem;
+    line-height: 1.758rem;
+}
+
+.formulario {
+    width: 59rem;
+    height: 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    background-color: var(--principal800);
+    color: var(--cinzaBranco);
+    border-radius: 0.688rem;
+    box-shadow: 0 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
+}
+
+.formulario input {
+    width: 32.5rem;
+    height: 2.75rem;
+}
+
+.botaoregistrar {
+    margin-top: 2rem;
+}

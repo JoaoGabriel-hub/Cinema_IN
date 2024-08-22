@@ -1,0 +1,67 @@
+.open{
+    width: 9.125rem;
+    height: 2.75rem;
+    background-color: var(--principal400);
+    border: none;
+    border-radius: .625rem;
+    color: var(--texto50);
+    font-family: "Roboto";
+    font-size: 1.5rem;
+    box-shadow: 0 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
+}
+
+.open:hover {
+    transform: none;
+    background-color: #90b1ff;
+}
+
+.modal .overlay{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.content{
+    width: 50rem;
+    height: 22.188rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 1rem;
+    text-align: left;
+    position: absolute;
+    top: 100vh;
+    left: 23vw;
+    background-color: var(--complementar2500);
+    border-radius: 1rem;
+    color: var(--texto50);
+    box-shadow: 0 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.text h1 {
+    font-weight: 700;
+}
+.text h2 {
+    margin-bottom: 1rem;
+}
+
+.close{
+    width: 2.188rem;
+    height: 2.188rem;
+}
