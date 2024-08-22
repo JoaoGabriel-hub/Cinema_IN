@@ -33,16 +33,16 @@ async function criarAssentos(sessionId) {
 }
 
 const postSession = async (req, res) => {
-    const { movieId, time } = req.body;
+    const { movieId, time, city, neighborhood, type, sessionId } = req.body;
     
     try {
         // Criar uma nova sessão
-        const newSession = await Session.create({ movieId, time });
+        const newSession = await Session.create({ movieId, time, city, neighborhood, type, sessionId });
 
         // Criar assentos automáticos para a sessão
-        const seats = await criarAssentos(newSession.id);
+        const seats = await criarAssentos(newSession.sessionId);
 
-        res.status(201).json({ id: newSession.id, movieId, time, seats });
+        res.status(201).json({ id: newSession.sessionId, movieId, time, city, neighborhood, type, seats });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
