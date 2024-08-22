@@ -38,7 +38,6 @@ footer {
     padding: 4rem;
 }
 
-
 .filmes {
     display: flex;
     justify-content: center;
@@ -60,6 +59,9 @@ footer {
     color: var(--cinzaBranco);
     border-radius: 0.504rem;
     padding: 0.504rem;
+    font-family: 'Poppins';
+    font-size: 1.154rem;
+    text-align: center;
 }
 
 .emcartaz button:hover {
@@ -73,9 +75,9 @@ footer {
     box-shadow: 0 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
 }
 
-a {
+.vermaisfilmes {
     color: var(--cinzaBranco);
     text-align: right;
     font-family: "Roboto";
-    margin: 2rem 1rem 3rem;
+    margin: 3rem 1rem 3rem;
 }
