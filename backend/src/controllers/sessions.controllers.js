@@ -89,5 +89,7 @@ const getNeighborhoods = async (req, res) => {
 
 module.exports = {
     getSession,
-    postSession
+    postSession,
+    getCities,
+    getNeighborhoods
 };
