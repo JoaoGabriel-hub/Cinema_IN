@@ -84,19 +84,33 @@ const Seat = sequelize.define("Seat", {
         type: DataTypes.FLOAT,
         allowNull: false
     },
+    ocupation: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
     userCpf: {
         type: DataTypes.STRING
     },
     userName: {
     type: DataTypes.STRING
     },
+    userId: {
+        type: DataTypes.UUID,
+    },
     sessionId: {
-        type: DataTypes.UUIDV4
+        type: DataTypes.UUIDV4,
+        allowNull: false
     }
 });
 
 // Modelo do Usuário (Conteúdo BONUS)
 const User = sequelize.define("User", {
+    userId: {
+        type: DataTypes.UUID,
+        defaultValue: () => UUIDV4(),
+        primaryKey: true,
+        allowNull: false
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -136,8 +150,8 @@ Session.belongsTo(Movie, {foreignKey: "movieId"});
 Session.hasMany(Seat, {onDelete: "CASCADE", foreignKey: "sessionId"}); // Em caso de erros, devo olhar essa linha, principalmente a foreignKey
 Seat.belongsTo(Session, {foreignKey: "sessionId"});
 
-Seat.belongsTo(User);
-User.hasMany(Seat, { onDelete: 'CASCADE' });
+User.hasMany(Seat, { onDelete: 'CASCADE', foreignKey: "userId"});
+Seat.belongsTo(User, {foreignKey: "userId"});
 
 // Exportação das variáveis
 module.exports = {
