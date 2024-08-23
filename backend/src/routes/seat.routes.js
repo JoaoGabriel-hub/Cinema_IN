@@ -8,6 +8,7 @@ const seatRoutes = express.Router();
 const seatsControllers = require('../controllers/seats.controllers');
 
 seatRoutes.get('/:id', seatsControllers.getSeats);
+seatRoutes.patch('/assentos/:id', seatsControllers.updateSeat);
 
 // Exportação
 module.exports = seatRoutes;

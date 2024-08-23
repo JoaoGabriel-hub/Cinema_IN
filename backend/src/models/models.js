@@ -129,7 +129,7 @@ const User = sequelize.define("User", {
     },
     username: {
         type: DataTypes.STRING,
-        primaryKey: true,
+        /*primaryKey: true,*/
         allowNull: false
     },
     email: {

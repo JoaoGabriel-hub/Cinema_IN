@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 
 
 const registerUser = async (req, res) => {
-    const { name, lastName, cpf, birthday, username, email, password } = req.body;
+    const { userId, name, lastName, cpf, birthday, username, email, password } = req.body;
 
     try {
         // Verifique se o e-mail, CPF ou nome de usuário já estão em uso
@@ -27,6 +27,7 @@ const registerUser = async (req, res) => {
 
         // Criando o novo usuário
         const user = await User.create({
+            userId,
             name,
             lastName,
             cpf,
