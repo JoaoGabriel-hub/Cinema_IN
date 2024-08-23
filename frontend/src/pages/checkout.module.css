@@ -63,6 +63,7 @@
     align-items: center;
     background-color: var(--cinza100);
     padding: 2rem;
+    margin: auto;
 }
 
 .fundoassentos div {

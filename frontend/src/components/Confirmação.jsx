@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import style from "./confirmacao.module.css";
+import ConfirmarReserva from './ConfirmarReserva';
 import { NavLink } from 'react-router-dom';
 
 export default function Confirmacao({ onClose }) {
@@ -25,6 +26,10 @@ export default function Confirmacao({ onClose }) {
 
   return (
     <div>
+      <button onClick={toggleModal} className={style.open}>
+        CONFIRMAR
+      </button>
+
       {modal && (
         <div className={style.modal}>
           <div className={style.overlay} onClick={onClose}></div>
@@ -37,9 +42,8 @@ export default function Confirmacao({ onClose }) {
               <button onClick={onClose} className={style.close}>
                 CANCELAR
               </button>
-              <button onClick={handleConfirmClick} className={style.confirm}>
-                CONFIRMAR
-              </button>
+
+              <ConfirmarReserva onConfirm={toggleModal} />
             </div>
           </div>
         </div>

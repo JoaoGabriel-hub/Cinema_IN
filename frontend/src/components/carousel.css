@@ -56,20 +56,18 @@
     margin-left: 5.313rem;
   }
 
-  .botoes {
-    width: 86rem;
-    margin: auto;
+  .botoes-swiper {
+    position: relative;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 1.7rem;
+    top: 21.8rem;
   }
-
 
   .next {
     width: 5.188rem; 
     height: 5.188rem;
-    position: relative; 
-    left: 75.5rem;
-    margin: auto;
-    z-index: 2;
-    top: 22.1rem;
   }
 
   .next:hover {
@@ -85,8 +83,6 @@
     z-index: 2;
     width: 5.188rem; 
     height: 5.188rem;
-    position: relative; 
-    top: 22.1rem;
   }
 
   .prev:hover {
@@ -98,3 +94,10 @@
     height: 5.188rem;
   }
   
+  @media (min-width: 1600px) {
+
+    .botoes-swiper{
+      padding: 0px 7.4vw;
+    }
+    
+  }
