@@ -68,8 +68,6 @@ const postSession = async (req, res) => {
     }
 };
 
-const { Session } = require('../models/models');
-
 const getNeighborhoods = async (req, res) => {
     const { city } = req.params;
 
@@ -80,8 +78,8 @@ const getNeighborhoods = async (req, res) => {
             where: { city },
             group: ['neighborhood']
         });
-
-        res.json(neighborhoods);
+        const neighborhoodValues = neighborhoods.map(session => session.neighborhood);
+        res.json(neighborhoodValues);
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

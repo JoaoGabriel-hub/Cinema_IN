@@ -8,9 +8,9 @@ const sessionRoutes = express.Router();
 const sessionController = require('../controllers/sessions.controllers');
 
 sessionRoutes.get('/city', sessionController.getCities);
+sessionRoutes.get('/:city', sessionController.getNeighborhoods);
 sessionRoutes.get('/:id', sessionController.getSession);
 sessionRoutes.post('/:id', sessionController.postSession);
-sessionRoutes.get('/session/:city', sessionController.getNeighborhoods);
 
 // Exportação
 module.exports = sessionRoutes;
