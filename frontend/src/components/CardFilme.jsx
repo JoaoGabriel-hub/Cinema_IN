@@ -34,7 +34,7 @@ export function CardFilme({ movie }) {
                     <p>{movie.synopsis}</p>
                 </div>
             </div>
-            <NavLink to='/sessoes' state={{ movie }}>
+            <NavLink to={`/sessoes/${movie.movieId}`} state={{ movie }}>
                 <button>VER SESSÕES</button>
             </NavLink>
         </div>

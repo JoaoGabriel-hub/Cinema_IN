@@ -36,7 +36,7 @@ export function Home() {
                             <div key={movie.id} className={style.emcartaz}>
                                 <img src={movie.imageUrl} alt={movie.title} className={style.cartaz} />
                                 <h2>{movie.title}</h2>
-                                <NavLink to={`/sessoes/${movie.id}`}>
+                                <NavLink to={`/sessoes/${movie.movieId}`}>
                                     <button className={style.sessoes}>
                                         SESSÕES DISPONÍVEIS
                                     </button>

@@ -7,7 +7,7 @@ export function Horarios({ movie }) {
     const navigate = useNavigate();
 
     const handleButtonClick = (hora, tipoTela) => {
-        navigate('/checkout', { state: { movie: { id: movie.id }, hora, tipoTela } });
+        navigate(`/checkout/${movie.movieId}`, { state: { movie: { id: movie.id }, hora, tipoTela } });
     };
 
     return (

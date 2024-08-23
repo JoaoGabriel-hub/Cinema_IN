@@ -3,7 +3,7 @@ import style from "./confirmacao.module.css";
 import ConfirmarReserva from './ConfirmarReserva';
 import { NavLink } from 'react-router-dom';
 
-export default function Confirmacao({ onClose }) {
+export default function Confirmação({ onClose }) {
   const [modal, setModal] = useState(true); // Modal inicial aberto
   const [secondModal, setSecondModal] = useState(false); // Segundo modal inicialmente fechado
 

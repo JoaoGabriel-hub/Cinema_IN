@@ -17,10 +17,10 @@ export function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/registrar" element={<Registrar />}></Route>
-        <Route path="/sessoes" element={<Sessões />}></Route>
+        <Route path="/sessoes/:id" element={<Sessões />}></Route>
         <Route path="/filmes" element={<Filmes />}></Route>
         <Route path="/faleconosco" element={<FaleConosco />}></Route>
-        <Route path="/checkout" element={<Checkout />}></Route>
+        <Route path="/checkout/:id" element={<Checkout />}></Route>
       </Routes>
     </BrowserRouter>
   )
