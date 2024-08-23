@@ -18,6 +18,7 @@ const buyTickets = async (req, res) => {
 
         // Marcar o assento como ocupado
         seat.ocupado = true;
+        seat.cpf = cpf;
         await seat.save();
 
         res.status(200).json({ message: 'Ingresso comprado com sucesso', seat });
