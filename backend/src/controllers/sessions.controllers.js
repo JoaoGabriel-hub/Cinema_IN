@@ -48,8 +48,27 @@ const postSession = async (req, res) => {
     }
 };
 
+const { Session } = require('../models/models');
+
+const getNeighborhoods = async (req, res) => {
+    const { city } = req.params;
+
+    try {
+        // Buscar todas as sessões da cidade especificada
+        const neighborhoods = await Session.findAll({
+            attributes: ['neighborhood'],
+            where: { city },
+            group: ['neighborhood']
+        });
+
+        res.json(neighborhoods);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
 
 module.exports = {
     getSession,
-    postSession
+    postSession,
+    getNeighborhoods
 };
