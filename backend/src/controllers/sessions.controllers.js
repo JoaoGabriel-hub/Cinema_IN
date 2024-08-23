@@ -1,17 +1,37 @@
 const { Session } = require('../models/models'); 
+const sequelize = require('sequelize');
+
+const getCities = async (req, res) => {
+    try {
+        const sessions = await Session.findAll({
+            attributes: [[sequelize.fn('DISTINCT', sequelize.col('city')), 'city']]
+        });
+
+        const cities = sessions.map(session => session.city);
+        res.json(cities);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
 
 const getSession = async (req, res) => {
     const { id } = req.params;
+    if (!id) {
+        return res.status(400).json({ error: 'movieId is required' });
+    }
+    const movieId = (id);
+
     try {
-        const sessions = await Session.findAll({ where: { id } });
+        const sessions = await Session.findAll({ where: { movieId } });
         if (sessions.length === 0) {
-            return res.status(404).json({ error: 'No sessions found for the given id' });
+            return res.status(404).json({ error: 'No sessions found for the given movieId' });
         }
         res.json(sessions);
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 };
+
 // Importar o modelo Seat
 const { Seat } = require('../models/models');
 
@@ -69,6 +89,5 @@ const getNeighborhoods = async (req, res) => {
 
 module.exports = {
     getSession,
-    postSession,
-    getNeighborhoods
+    postSession
 };
