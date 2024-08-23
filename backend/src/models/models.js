@@ -67,7 +67,7 @@ const Session = sequelize.define("Session", {
 
 // Modelo dos assentos
 const Seat = sequelize.define("Seat", {
-    id: {
+    SeatId: {
         type: DataTypes.UUIDV4,
         primaryKey: true,
         defaultValue: () => UUIDV4(),
@@ -94,13 +94,13 @@ const Seat = sequelize.define("Seat", {
     userName: {
     type: DataTypes.STRING
     },
-    userId: {
-        type: DataTypes.UUID,
-    },
     sessionId: {
         type: DataTypes.UUIDV4,
         allowNull: false
-    }
+    },
+    userId: {
+        type: DataTypes.UUID,
+    },
 });
 
 // Modelo do Usuário (Conteúdo BONUS)
@@ -150,8 +150,8 @@ Session.belongsTo(Movie, {foreignKey: "movieId"});
 Session.hasMany(Seat, {onDelete: "CASCADE", foreignKey: "sessionId"}); // Em caso de erros, devo olhar essa linha, principalmente a foreignKey
 Seat.belongsTo(Session, {foreignKey: "sessionId"});
 
-User.hasMany(Seat, { onDelete: 'CASCADE', foreignKey: "userId"});
-Seat.belongsTo(User, {foreignKey: "userId"});
+User.hasMany(Seat, { foreignKey: 'userId', onDelete: 'CASCADE' });
+Seat.belongsTo(User, { foreignKey: 'userId' });
 
 // Exportação das variáveis
 module.exports = {
