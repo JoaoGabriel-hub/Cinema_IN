@@ -62,8 +62,29 @@ const getMoviesByGenreAndRating = async (req, res) => {
     }
 };
 
+const getSessionsByNeighborhood = async (req, res) => {
+    try {
+        const { neighborhood } = req.query;
+        const whereClause = {};
+
+        if (neighborhood) {
+            whereClause.neighborhood = neighborhood;
+        }
+
+        const sessions = await Session.findAll({
+            where: whereClause,
+            include: [{ model: Movie, as: 'movie' }]
+        });
+
+        res.status(200).json(sessions);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 
 module.exports = {
     getGenres,
-    getMoviesByGenreAndRating
+    getMoviesByGenreAndRating,
+    getSessionsByNeighborhood
 };
