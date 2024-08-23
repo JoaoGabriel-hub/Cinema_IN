@@ -1,21 +1,36 @@
-import { useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import styles from "./checkout.module.css";
 import Assentos from "../components/Assentos";
-import Confirmacao from '../components/Confirmação';
+import Confirmação from '../components/Confirmação';
 
 export function Checkout() {
+    const { id } = useParams();
     const location = useLocation();
-    const { hora, tipoTela, movie } = location.state || {};
-    console.log(movie);
-    
+    const { hora, tipoTela } = location.state || {};
 
+    const [movie, setMovie] = useState(null);
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [seatInfo, setSeatInfo] = useState({});
     const [isFormValid, setIsFormValid] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    useEffect(() => {
+        // Busca os dados do filme a partir do ID obtido de useParams
+        const fetchMovie = async () => {
+            try {
+                const response = await fetch(`http://localhost:3000/movies/${id}`);
+                const data = await response.json();
+                setMovie(data);
+            } catch (error) {
+                console.error("Erro ao buscar o filme:", error);
+            }
+        };
+
+        fetchMovie();
+    }, [id]);
 
     const handleSeatSelect = (seatId, isSelected) => {
         setSelectedSeats((prevSeats) =>
@@ -43,7 +58,7 @@ export function Checkout() {
         }));
         validateForm();
     };
-    
+
     const validateForm = () => {
         const isValid = selectedSeats.every(seatId => {
             const info = seatInfo[seatId];
@@ -88,7 +103,7 @@ export function Checkout() {
                             </div>
                             <div className={styles.fundoassentos}>
                                 <div>
-                                    <img src="src/assets/Icone-Assento.svg" alt="Assento" />
+                                    <img src="/src/assets/Icone-Assento.svg" alt="Assento" />
                                     <h2>ASSENTOS ESCOLHIDOS</h2>
                                 </div>
                                 <div className={styles.lugares}>
@@ -125,14 +140,15 @@ export function Checkout() {
                         <p>Erro ao carregar as informações da sessão!</p>
                     )}
                 </div>
-                
+
                 <Assentos onSeatSelect={handleSeatSelect} />
             </div>
             <Footer />
 
-            {isModalOpen && <Confirmacao onClose={handleModalClose} />}
+            {isModalOpen && <Confirmação onClose={handleModalClose} />}
         </>
     );
 }
+
 
 

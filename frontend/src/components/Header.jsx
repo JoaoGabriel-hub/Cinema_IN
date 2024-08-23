@@ -5,21 +5,21 @@ export function Header() {
     return(
         <div>
             <div className={style.header}>
-                <NavLink to="/"><img src="src/assets/Logo.svg" className={style.logo}/></NavLink>
+                <NavLink to="/"><img src="/src/assets/Logo.svg" className={style.logo}/></NavLink>
                 <div className={style.buttons}>
                     <NavLink to="/filmes">
                         <button>
-                            <img src="src/assets/Icone-Filmes.svg"/>
+                            <img src="/src/assets/Icone-Filmes.svg"/>
                         </button>
                     </NavLink>
                     <NavLink to="/login">
                         <button>
-                            <img src="src/assets/Icone-Entrar.svg"/>
+                            <img src="/src/assets/Icone-Entrar.svg"/>
                         </button>
                     </NavLink>
                     <NavLink to="/faleconosco">
                         <button>
-                            <img src="src/assets/Icone-Ajuda.svg"/>
+                            <img src="/src/assets/Icone-Ajuda.svg"/>
                         </button>
                     </NavLink>
                 </div>

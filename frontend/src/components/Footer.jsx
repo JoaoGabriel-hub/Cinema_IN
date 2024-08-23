@@ -22,24 +22,24 @@ export function Footer() {
                             <div className={style.buttons}>
                                 <a href="https://www.instagram.com/injunioruff/">
                                     <button>
-                                        <img src="src/assets/Icone-Instagram.svg" alt="Instagram" />
+                                        <img src="/src/assets/Icone-Instagram.svg" alt="Instagram" />
                                     </button>
                                 </a>
                                 <a href="https://www.facebook.com/injunioruff/">
                                     <button>
-                                        <img src="src/assets/Icone-Facebook.svg" alt="Facebook" />
+                                        <img src="/src/assets/Icone-Facebook.svg" alt="Facebook" />
                                     </button>
                                 </a>
                                 <a href="https://www.linkedin.com/company/in-junior/?originalSubdomain=br">
                                 <button>
-                                    <img src="src/assets/Icone-Linkedin.svg" alt="Linkedin" />
+                                    <img src="/src/assets/Icone-Linkedin.svg" alt="Linkedin" />
                                 </button>
                                 </a>
                             </div>
                         </div>
                     </div>
                     <NavLink to="/">
-                        <img src="src/assets/INgresso.svg" className={style.INgresso}/>
+                        <img src="/src/assets/INgresso.svg" className={style.INgresso}/>
                     </NavLink>
                     
                     <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=720&amp;height=600&amp;hl=en&amp;q=Universidade%20federal%20fluminense%20instituto%20de%20computa%C3%A7%C3%A3o+(Injunior)&amp;t=&amp;z=18&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>

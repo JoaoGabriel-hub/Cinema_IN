@@ -7,6 +7,7 @@ const movieRoutes = express.Router();
 
 const movieController = require('../controllers/movie.controllers');
 
+movieRoutes.get('/:id', movieController.getMovieId);
 movieRoutes.get('/', movieController.getMovie);
 movieRoutes.post('/', movieController.postMovie);
 

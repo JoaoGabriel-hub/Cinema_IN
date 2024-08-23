@@ -12,7 +12,7 @@ export default function Assentos({ onSeatSelect }) {
 
     return (
         <section className={styles.cinema}>
-            <img src="src/assets/Tela.svg" alt="Tela" />
+            <img src="/src/assets/Tela.svg" alt="Tela" />
             <div className={styles.seats}>
                 <p>
                     A<br/>
