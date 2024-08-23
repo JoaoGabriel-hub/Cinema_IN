@@ -42,7 +42,7 @@ async function criarAssentos(sessionId, price) {
 
     rows.forEach(row => {
         for (let number = 1; number <= 18; number++) {
-            seats.push({ sessionId, row, number, price, ocupado: false });
+            seats.push({ sessionId, row, number, price, ocupation: false });
         }
     });
 
