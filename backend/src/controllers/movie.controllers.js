@@ -1,5 +1,19 @@
 const { Movie } = require('../models/models'); 
 
+const getMovieId = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const movie = await Movie.findByPk(id);
+        if (!movie) {
+            return res.status(404).json({ error: 'Filme não encontrado' });
+        }
+        res.json(movie);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+
 const getMovie = async (req, res) => {
     try {
         const movies = await Movie.findAll();
@@ -25,5 +39,6 @@ const postMovie = async (req, res) => {
 
 module.exports = {
     getMovie,
-    postMovie
+    postMovie,
+    getMovieId
 };
