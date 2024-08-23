@@ -7,6 +7,7 @@ const sessionRoutes = express.Router();
 
 const sessionController = require('../controllers/sessions.controllers');
 
+sessionRoutes.get('/city', sessionController.getCities);
 sessionRoutes.get('/:id', sessionController.getSession);
 sessionRoutes.post('/:id', sessionController.postSession);
 
