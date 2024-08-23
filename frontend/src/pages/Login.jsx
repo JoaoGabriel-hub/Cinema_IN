@@ -16,19 +16,45 @@ function LoginComponent() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formValues.username && formValues.password) {
-      console.log("Formulário válido. Dados:", formValues);
+      try {
+        const response = await fetch("http://localhost:3000/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            usernameOrEmail: formValues.username,
+            password: formValues.password,
+          }),
+        });
 
-      // Aqui você pode enviar os dados para um servidor usando fetch ou axios
+        const data = await response.json();
 
-      navigate("/");
+        if (response.ok) {
+          alert("Login realizado com sucesso!");
+          navigate("/");
+        } else {
+          if (data.message === "Usuário ou e-mail não encontrado.") {
+            alert("Usuário inexistente. Necessário registrar-se.");
+          } else if (data.message === "Senha incorreta.") {
+            alert("Senha incorreta.");
+          } else {
+            alert("Erro no login. Tente novamente.");
+          }
+        }
+      } catch (error) {
+        console.error("Erro na requisição:", error);
+        alert("Erro na requisição. Tente novamente mais tarde.");
+      }
     } else {
       alert("Preencha todos os campos obrigatórios!");
     }
   };
+
 
   return (
     <div className={style.form}>
