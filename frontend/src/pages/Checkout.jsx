@@ -1,20 +1,21 @@
-import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { useLocation } from 'react-router-dom';
-import React, { useEffect } from 'react';
-
 import styles from "./checkout.module.css";
 import Assentos from "../components/Assentos";
-import Confirmacao from '../components/Confirmação'; // Importa o componente Confirmacao
+import Confirmacao from '../components/Confirmação';
 
 export function Checkout() {
     const location = useLocation();
-    const { hora, tipoTela } = location.state || {};
+    const { hora, tipoTela, movie } = location.state || {};
+    console.log(movie);
+    
+
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [seatInfo, setSeatInfo] = useState({});
     const [isFormValid, setIsFormValid] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar o modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleSeatSelect = (seatId, isSelected) => {
         setSelectedSeats((prevSeats) =>
@@ -43,7 +44,6 @@ export function Checkout() {
         validateForm();
     };
     
-
     const validateForm = () => {
         const isValid = selectedSeats.every(seatId => {
             const info = seatInfo[seatId];
@@ -55,14 +55,14 @@ export function Checkout() {
     const handleConfirmClick = () => {
         if (isFormValid) {
             console.log("Formulário válido e confirmado!");
-            setIsModalOpen(true); // Abre o modal quando o botão é clicado
+            setIsModalOpen(true);
         } else {
             alert("Preencha todos os campos obrigatórios!");
         }
     };
 
     const handleModalClose = () => {
-        setIsModalOpen(false); // Fecha o modal
+        setIsModalOpen(false);
     };
 
     useEffect(() => {
@@ -74,12 +74,12 @@ export function Checkout() {
             <Header />
             <div className={styles.pagina}>
                 <div className={styles.asideassentos}>
-                    {hora && tipoTela ? (
+                    {movie ? (
                         <div>
                             <div className={styles.filme}>
-                                <img src="w" className={styles.imgfilme} />
+                                <img src={movie.imageUrl} className={styles.imgfilme} alt={movie.title} />
                                 <div className={styles.dadossessao}>
-                                    <h3>Nome do Filme</h3>
+                                    <h3>{movie.title}</h3>
                                     <div>
                                         <div className={styles.tiposessao}>{tipoTela}</div>
                                         <div className={styles.tiposessao}>{hora}</div>
@@ -88,14 +88,13 @@ export function Checkout() {
                             </div>
                             <div className={styles.fundoassentos}>
                                 <div>
-                                    <img src="src/assets/Icone-Assento.svg" />
+                                    <img src="src/assets/Icone-Assento.svg" alt="Assento" />
                                     <h2>ASSENTOS ESCOLHIDOS</h2>
                                 </div>
                                 <div className={styles.lugares}>
                                     {selectedSeats.length > 0 && selectedSeats.map((seatId) => (
                                         <div key={seatId} className={styles.assentos}>
                                             <h2>{seatId}</h2>
-                                            <div></div>
                                             <p>Nome</p>
                                             <input
                                                 type="text"
@@ -123,7 +122,7 @@ export function Checkout() {
                             </div>
                         </div>
                     ) : (
-                        <p>Erro!</p>
+                        <p>Erro ao carregar as informações da sessão!</p>
                     )}
                 </div>
                 
@@ -131,9 +130,9 @@ export function Checkout() {
             </div>
             <Footer />
 
-            {/* Adiciona o componente de confirmação com a lógica de abertura e fechamento */}
             {isModalOpen && <Confirmacao onClose={handleModalClose} />}
         </>
     );
 }
+
 

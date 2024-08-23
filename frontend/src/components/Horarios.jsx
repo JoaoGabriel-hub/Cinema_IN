@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import style from "./horarios.module.css";
 
-export function Horarios() {
+export function Horarios({ movie }) {
     const [activeSession, setActiveSession] = useState(null);
     const navigate = useNavigate();
 
     const handleButtonClick = (hora, tipoTela) => {
-        navigate('/checkout', { state: { hora, tipoTela } });
+        navigate('/checkout', { state: { movie: { id: movie.id }, hora, tipoTela } });
     };
 
     return (
@@ -50,3 +50,4 @@ export function Horarios() {
         </div>
     );
 }
+

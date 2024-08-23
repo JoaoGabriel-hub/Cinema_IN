@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { NavLink } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 import style from "./sessões.module.css";
 import { Horarios } from "../components/Horarios";
 
 export function Sessões() {
+    const location = useLocation();
+    const { movie } = location.state || {}; // Obter o filme passado via state
     const [cidade, setCidade] = useState('');
     const [bairro, setBairro] = useState('');
+
+    // Verificar se os dados do filme foram passados
+    if (!movie) {
+        return <p>Erro: Nenhum filme selecionado.</p>;
+    }
 
     const cidades = ['Niterói, RJ', 'Nova Iguaçu, RJ', 'Rio de Janeiro, RJ', 'São Gonçalo, RJ', 'Petrópolis, RJ'];
     const bairros = {
@@ -22,22 +29,15 @@ export function Sessões() {
         <>
             <Header />
             <div className={style.banner}>
-                <img src="o" className={style.capadofilme} />
+                <img src={movie.imageUrl} className={style.capadofilme} alt={movie.title}/>
                 <div className={style.informacoes}>
                     <div className={style.dadosfilme}>
                         <div className={style.topo}>
-                            <h1>Nome do Filme</h1>
+                            <h1>{movie.title}</h1>
                             <img src="s" className={style.idade} />
                         </div>
-                        <h2>Estilos do filme</h2>
-                        <p>
-                            Resumo do filme suuuuuper legal! É sério!
-                            Lorem ipsum dolor sit amet consectetur 
-                            adipisicing elit. Hic adipisci sunt eveniet 
-                            aliquam odio est, debitis reprehenderit alias 
-                            officiis ut magnam necessitatibus dolor et ea 
-                            ullam cum ab vel vero?
-                        </p>
+                        <h2>{movie.genre}</h2>
+                        <p>{movie.synopsis}</p>
                     </div>
                     <div className={style.lugar}>
                         <select className={style.filter} name="Cidade" value={cidade} onChange={(e) => setCidade(e.target.value)}>
@@ -59,8 +59,10 @@ export function Sessões() {
                     </div>
                 </div>
             </div>
-            <Horarios />
+            <Horarios key={movie.movieId} movie={movie} />
             <Footer />
         </>
     );
 }
+
+
