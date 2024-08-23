@@ -1,5 +1,5 @@
 const { Movie } = require('../models/models'); 
-
+const { Session } = require('../models/models');
 const getGenres = async (req, res) => {
     try {
         // Buscar todos os filmes do banco de dados
@@ -64,21 +64,16 @@ const getMoviesByGenreAndRating = async (req, res) => {
 
 const getSessionsByNeighborhood = async (req, res) => {
     try {
-        const { neighborhood } = req.query;
-        const whereClause = {};
-
-        if (neighborhood) {
-            whereClause.neighborhood = neighborhood;
-        }
+        const { neighborhood } = req.params;
 
         const sessions = await Session.findAll({
-            where: whereClause,
-            include: [{ model: Movie, as: 'movie' }]
+            where: { neighborhood },
         });
 
         res.status(200).json(sessions);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error(`Error fetching sessions by neighborhood: ${error.message}`);
+        res.status(500).json({ error: error.message });
     }
 };
 
