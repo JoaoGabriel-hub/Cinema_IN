@@ -1,7 +1,7 @@
 const { Seat } = require('../models/models');
 
 // Função para comprar um ingresso
-const buyTickets = async (req, res) => {
+const buyTicket = async (req, res) => {
     const { sessionId, row, number } = req.body;
 
     try {
@@ -28,5 +28,5 @@ const buyTickets = async (req, res) => {
 };
 
 module.exports = {
-    buyTickets
+    buyTicket
 };
