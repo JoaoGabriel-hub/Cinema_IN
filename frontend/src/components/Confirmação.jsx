@@ -4,9 +4,8 @@ import ConfirmarReserva from './ConfirmarReserva';
 import { NavLink } from 'react-router-dom';
 
 export default function Confirmação({ onClose }) {
-  const [modal, setModal] = useState(true); // Modal inicial aberto
-  const [secondModal, setSecondModal] = useState(false); // Segundo modal inicialmente fechado
-
+  const [modal, setModal] = useState(true); 
+  const [secondModal, setSecondModal] = useState(false); 
   useEffect(() => {
     if (modal || secondModal) {
       document.body.style.overflow = 'hidden';
@@ -20,13 +19,13 @@ export default function Confirmação({ onClose }) {
   }, [modal, secondModal]);
 
   const handleConfirmClick = () => {
-    setModal(false); // Fecha o primeiro modal
-    setSecondModal(true); // Abre o segundo modal
+    setModal(false); 
+    setSecondModal(true); 
   };
 
   return (
     <div>
-      <button onClick={toggleModal} className={style.open}>
+      <button onClick={handleConfirmClick} className={style.open}>
         CONFIRMAR
       </button>
 
@@ -43,7 +42,10 @@ export default function Confirmação({ onClose }) {
                 CANCELAR
               </button>
 
-              <ConfirmarReserva onConfirm={toggleModal} />
+            
+              <button onClick={handleConfirmClick} className={style.confirm}>
+                CONFIRMAR
+              </button>
             </div>
           </div>
         </div>
@@ -56,12 +58,15 @@ export default function Confirmação({ onClose }) {
             <div className={style.secondtext}>
               <NavLink to='/'>
                 <button onClick={() => setSecondModal(false)} className={style.secondconfirm}>
-                  <img src="src/assets/Botao-Confirma.svg" alt="Fechar" />
+                  <img src="/src/assets/Botao-Confirma.svg" alt="Fechar" />
                 </button>           
               </NavLink>
               <h1>Reserva Confirmada!</h1>
               <h2>Sua reserva foi confirmada com sucesso para a sessão selecionada.</h2>
-              <p>Estamos felizes em tê-lo conosco para essa experiência cinematográfica. Prepare-se para se envolver em uma jornada emocionante na tela grande!</p>
+              <p>
+                Estamos felizes em tê-lo conosco para essa experiência cinematográfica. 
+                Prepare-se para se envolver em uma jornada emocionante na tela grande!
+              </p>
             </div>            
           </div>
         </div>

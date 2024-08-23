@@ -18,7 +18,6 @@ export function Checkout() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
-        // Busca os dados do filme a partir do ID obtido de useParams
         const fetchMovie = async () => {
             try {
                 const response = await fetch(`http://localhost:3000/movies/${id}`);
@@ -68,6 +67,13 @@ export function Checkout() {
     };
 
     const handleConfirmClick = () => {
+        // Verifica se há assentos selecionados
+        if (selectedSeats.length === 0) {
+            alert("Por favor, selecione pelo menos um assento!");
+            return;
+        }
+
+        // Verifica se o formulário está válido
         if (isFormValid) {
             console.log("Formulário válido e confirmado!");
             setIsModalOpen(true);
@@ -131,7 +137,7 @@ export function Checkout() {
                                         </div>
                                     ))}
                                 </div>
-                                <button onClick={handleConfirmClick} disabled={!isFormValid} className={styles.botaoconfirma}>
+                                <button type='submit' onClick={handleConfirmClick} disabled={!isFormValid} className={styles.botaoconfirma}>
                                      CONFIRMAR 
                                 </button>
                             </div>
@@ -149,6 +155,5 @@ export function Checkout() {
         </>
     );
 }
-
 
 
