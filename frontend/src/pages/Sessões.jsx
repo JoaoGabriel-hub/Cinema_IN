@@ -25,6 +25,23 @@ export function Sessões() {
         'Petrópolis, RJ': ['Moinho Preto','Vila Manzini', '24 de Maio']
     };
 
+    function getRatingImage(rating) {
+        switch(rating) {
+            case 1:
+                return "/src/assets/10anos.svg";
+            case 2:
+                return "/src/assets/12anos.svg";
+            case 3:
+                return "/src/assets/14anos.svg";
+            case 4:
+                return "/src/assets/16anos.svg";
+            case 5:
+                return "/src/assets/18anos.png";
+            default:
+                return "/src/assets/Livre.svg"; 
+        }
+    }
+
     return (
         <>
             <Header />
@@ -34,7 +51,7 @@ export function Sessões() {
                     <div className={style.dadosfilme}>
                         <div className={style.topo}>
                             <h1>{movie.title}</h1>
-                            <img src="s" className={style.idade} />
+                            <img src={getRatingImage(movie.rating)} className={style.idade} />
                         </div>
                         <h2>{movie.genre}</h2>
                         <p>{movie.synopsis}</p>

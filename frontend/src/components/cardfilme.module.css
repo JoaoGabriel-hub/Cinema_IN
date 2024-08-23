@@ -21,6 +21,12 @@
     color: var(--texto50);
 }
 
+.rating {
+    width: 2rem;
+    height: 2rem;
+    border-radius: .25rem;
+}
+
 .datacard div:first-of-type {
     width: 26.383rem;
     display: flex;
