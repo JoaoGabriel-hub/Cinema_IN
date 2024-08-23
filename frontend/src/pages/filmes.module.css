@@ -81,3 +81,60 @@ select option {
     justify-content: center;
     gap: 4rem;
 }
+.pagination {
+    width: 32.25rem;
+    height: 4.25rem;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    gap: .3rem;
+}
+
+.pagination span {
+    width: 4.243rem;
+    height: 4.25rem;
+    background-color: var(--sombraSource);
+    border-radius: 0.425rem;
+    color: var(--cinza50);
+    font-family: 'Roboto';
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.pagination button {
+    width: 4.243rem;
+    height: 4.25rem;
+    background-color: var(--sombraSource);
+    border-radius: 0.425rem;
+    color: var(--cinza50);
+    font-family: 'Roboto';
+    font-size: 2rem;
+}
+
+.pagination button:disabled {
+    width: 4.243rem;
+    height: 4.25rem;
+    background-color: var(--complementar500);
+    border-radius: 0.425rem;
+    border: none;
+    color: var(--cinza50);
+    font-family: 'Roboto';
+    font-size: 2rem;
+}
+
+.prev {
+    border-radius: 0 !important;
+    background-color: var(--sombra2Source) !important;
+    border-radius: 1.7rem 0.425rem 0.425rem 1.7rem !important;
+    padding-top: .6rem;
+}
+
+.prox {
+    border-radius: 0 !important;
+    background-color: var(--sombra2Source) !important;
+    border-radius:  0.425rem 1.7rem 1.7rem 0.425rem !important;
+    padding-top: .6rem;
+}
