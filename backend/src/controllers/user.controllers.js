@@ -2,6 +2,20 @@ const bcrypt = require('bcrypt');
 const { User } = require('../models/models');  
 const Sequelize = require('sequelize');
 
+const getUser = async (req, res) => {
+    const { username } = req.params; // Corrigir a desestruturação para username
+    try {
+        const user = await User.findOne({ where: { username } }); // Usar uma variável diferente
+        if (!user) {
+            return res.status(400).json({ message: 'Usuário não encontrado.' });
+        }
+        return res.status(200).json(user);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Erro ao buscar usuário' });
+    }
+};
+
 
 const registerUser = async (req, res) => {
     const { userId, name, lastName, cpf, birthday, username, email, password } = req.body;
@@ -73,4 +87,4 @@ const loginUser = async (req, res) => {
     }
 };
 
-module.exports = { registerUser, loginUser };
+module.exports = { registerUser, loginUser , getUser};
