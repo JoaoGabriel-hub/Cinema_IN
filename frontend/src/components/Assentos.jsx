@@ -1,9 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from "./assentos.module.css";
 
-export default function Assentos({ onSeatSelect }) {
+export default function Assentos({ sessionId, onSeatSelect }) {
     const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
     const seatsPerRow = 18;
+    const [disabledSeats, setDisabledSeats] = useState([]);
+
+    useEffect(() => {
+        const fetchSeats = async () => {
+            try {
+                const response = await fetch(`http://localhost:3000/seats/${sessionId}`);
+                const data = await response.json();
+                
+                const occupiedSeats = data
+                    .filter(seat => seat.occupation)  
+                    .map(seat => seat.id);            
+
+                setDisabledSeats(occupiedSeats);
+            } catch (error) {
+                console.error("Erro ao buscar assentos ocupados:", error);
+            }
+        };
+
+        fetchSeats();
+    }, [sessionId]); // Adicione sessionId como dependência
 
     const handleSeatChange = (event) => {
         const seatId = event.target.value;
@@ -38,6 +58,7 @@ export default function Assentos({ onSeatSelect }) {
                                             value={seatId}
                                             className={styles.seatButton}
                                             onChange={handleSeatChange}
+                                            disabled={disabledSeats.includes(seatId)}  // Desabilita se o assento estiver ocupado
                                         />
                                     </label>
                                 );
