@@ -67,13 +67,11 @@ export function Checkout() {
     };
 
     const handleConfirmClick = () => {
-        // Verifica se há assentos selecionados
         if (selectedSeats.length === 0) {
             alert("Por favor, selecione pelo menos um assento!");
             return;
         }
 
-        // Verifica se o formulário está válido
         if (isFormValid) {
             console.log("Formulário válido e confirmado!");
             setIsModalOpen(true);
@@ -90,6 +88,19 @@ export function Checkout() {
         validateForm();
     }, [selectedSeats, seatInfo]);
 
+    const mapTipoTela = (tipo) => {
+        switch(tipo) {
+            case 0:
+                return "2D";
+            case 1:
+                return "3D";
+            case 2:
+                return "IMAX";
+            default:
+                return "Desconhecido"; // Caso ocorra um valor inesperado
+        }
+    };
+
     return (
         <>
             <Header />
@@ -102,7 +113,7 @@ export function Checkout() {
                                 <div className={styles.dadossessao}>
                                     <h3>{movie.title}</h3>
                                     <div>
-                                        <div className={styles.tiposessao}>{tipoTela}</div>
+                                        <div className={styles.tiposessao}>{mapTipoTela(tipoTela)}</div>
                                         <div className={styles.tiposessao}>{hora}</div>
                                     </div>
                                 </div>
@@ -155,5 +166,6 @@ export function Checkout() {
         </>
     );
 }
+
 
 

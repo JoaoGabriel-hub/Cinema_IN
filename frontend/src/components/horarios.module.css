@@ -65,3 +65,10 @@
     color: #1E1E1E;
     transform: none;
 }
+
+.indisponivel {
+    color: var(--cinza50);
+    font-family: "Nunito sans";
+    font-size: 2rem;
+    margin-top: 1rem;
+}

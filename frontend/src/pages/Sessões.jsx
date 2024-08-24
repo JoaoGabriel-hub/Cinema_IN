@@ -12,6 +12,7 @@ export function Sessões() {
     const [bairro, setBairro] = useState('');
     const [cidades, setCidades] = useState([]);
     const [bairros, setBairros] = useState([]);
+    const [sessoes, setSessoes] = useState([]);
 
     useEffect(() => {
         const fetchMovie = async () => {
@@ -55,6 +56,23 @@ export function Sessões() {
 
         fetchBairros();
     }, [cidade]);
+
+    useEffect(() => {
+        const fetchSessoes = async () => {
+            if (bairro) {
+                try {
+                    const response = await fetch(`http://localhost:3000/filters/hr/${id}/${bairro}`);
+                    const data = await response.json();
+                    console.log(`Sessões disponíveis para ${bairro}:`, data); 
+                    setSessoes(data);
+                } catch (error) {
+                    console.error(`Erro ao buscar as sessões para o bairro ${bairro}:`, error);
+                }
+            }
+        };
+
+        fetchSessoes();
+    }, [bairro, id]);
 
     if (!movie) {
         return <p>Carregando...</p>; 
@@ -111,9 +129,8 @@ export function Sessões() {
                     </div>
                 </div>
             </div>
-            <Horarios key={movie.movieId} movie={movie} />
+            {bairro && <Horarios key={movie.movieId} movie={movie} sessoes={sessoes} />}
             <Footer />
         </>
     );
 }
-
