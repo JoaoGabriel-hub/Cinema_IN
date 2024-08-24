@@ -60,6 +60,11 @@
     border-color: var(--callToActionSource);
 }
 
+.seatButton:disabled {
+    background-color: var(--sombra900);
+    border-color: var(--sombra900);
+}
+
 .caption {
     display: flex;
     flex-direction: column;

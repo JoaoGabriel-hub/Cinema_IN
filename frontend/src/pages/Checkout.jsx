@@ -66,18 +66,47 @@ export function Checkout() {
         setIsFormValid(isValid);
     };
 
-    const handleConfirmClick = () => {
+    const handleConfirmClick = async () => {
         if (selectedSeats.length === 0) {
             alert("Por favor, selecione pelo menos um assento!");
             return;
         }
 
-        if (isFormValid) {
-            console.log("Formulário válido e confirmado!");
-            setIsModalOpen(true);
-        } else {
-            alert("Preencha todos os campos obrigatórios!");
-        }
+        const handleConfirmSeats = async () => {
+            const username = "username-aqui"; // Substitua pelo username real
+            const userId = await fetchUserIdByUsername(username);
+        
+            if (isFormValid && userId) {
+                try {
+                    for (const seatId of selectedSeats) {
+                        const response = await fetch(`http://localhost:3000/seats/${seatId}`, {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                userId: userId,
+                                userName: seatInfo[seatId].name,
+                                userCpf: seatInfo[seatId].cpf,
+                            }),
+                        });
+        
+                        if (!response.ok) {
+                            throw new Error(`Erro ao atualizar o assento ${seatId}`);
+                        }
+                    }
+        
+                    console.log("Assentos confirmados com sucesso!");
+                    setIsModalOpen(true);
+                } catch (error) {
+                    console.error("Erro ao confirmar os assentos:", error);
+                    alert("Ocorreu um erro ao confirmar os assentos. Por favor, tente novamente.");
+                }
+            } else {
+                alert("Preencha todos os campos obrigatórios!");
+            }
+        };
+        
     };
 
     const handleModalClose = () => {
@@ -166,6 +195,7 @@ export function Checkout() {
         </>
     );
 }
+
 
 
 
