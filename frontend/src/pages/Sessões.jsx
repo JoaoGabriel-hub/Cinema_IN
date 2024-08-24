@@ -5,13 +5,13 @@ import { useParams } from 'react-router-dom';
 import style from "./sessões.module.css";
 import { Horarios } from "../components/Horarios";
 
-
-
 export function Sessões() {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
     const [cidade, setCidade] = useState('');
     const [bairro, setBairro] = useState('');
+    const [cidades, setCidades] = useState([]);
+    const [bairros, setBairros] = useState([]);
 
     useEffect(() => {
         const fetchMovie = async () => {
@@ -24,8 +24,37 @@ export function Sessões() {
             }
         };
 
+        const fetchCidades = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/sessions/city');
+                const data = await response.json();
+                console.log("Dados das cidades:", data);
+                setCidades(data);
+            } catch (error) {
+                console.error("Erro ao buscar as cidades:", error);
+            }
+        };
+
         fetchMovie();
+        fetchCidades();
     }, [id]);
+
+    useEffect(() => {
+        const fetchBairros = async () => {
+            if (cidade) {
+                try {
+                    const response = await fetch(`http://localhost:3000/sessions/city/${cidade}`);
+                    const data = await response.json();
+                    console.log(`Dados dos bairros de ${cidade}:`, data); 
+                    setBairros(data);
+                } catch (error) {
+                    console.error(`Erro ao buscar os bairros de ${cidade}:`, error);
+                }
+            }
+        };
+
+        fetchBairros();
+    }, [cidade]);
 
     if (!movie) {
         return <p>Carregando...</p>; 
@@ -47,15 +76,6 @@ export function Sessões() {
                 return "/src/assets/Livre.svg"; 
         }
     }
-
-    const cidades = ['Niterói, RJ', 'Nova Iguaçu, RJ', 'Rio de Janeiro, RJ', 'São Gonçalo, RJ', 'Petrópolis, RJ'];
-    const bairros = {
-        'Niterói, RJ': ['Viradouro', 'Barreto', 'Badu', 'Muriqui'],
-        'Nova Iguaçu, RJ': ['Centro', 'Rosa dos Ventos', 'Comendador Soares'],
-        'Rio de Janeiro, RJ': ['Botafogo', 'Leblon', 'Campo Grande'],
-        'São Gonçalo, RJ': ['Trindade', 'Rocha', 'Salgueiro'],
-        'Petrópolis, RJ': ['Moinho Preto', 'Vila Manzini', '24 de Maio']
-    };
 
     return (
         <>
@@ -82,7 +102,7 @@ export function Sessões() {
                         </select>
                         <select className={style.filter} name="Bairro" value={bairro} onChange={(e) => setBairro(e.target.value)} disabled={!cidade}>
                             <option disabled value="">Bairro</option>
-                            {cidade && bairros[cidade].map((bairro) => (
+                            {bairros.map((bairro) => (
                                 <option key={bairro} value={bairro}>
                                     {bairro}
                                 </option>
