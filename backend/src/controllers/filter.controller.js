@@ -61,13 +61,16 @@ const getMoviesByGenreAndRating = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-
+// Pega as sessões de um filme pelo bairro
 const getSessionsByNeighborhood = async (req, res) => {
     try {
-        const { neighborhood } = req.params;
+        const { movieId, neighborhood } = req.params;
 
         const sessions = await Session.findAll({
-            where: { neighborhood },
+            where: { 
+                neighborhood,
+                movieId
+            },
         });
 
         res.status(200).json(sessions);
@@ -76,7 +79,6 @@ const getSessionsByNeighborhood = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
-
 
 module.exports = {
     getGenres,

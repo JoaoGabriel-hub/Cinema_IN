@@ -7,7 +7,7 @@ const filterController = require('../controllers/filter.controller');
 // Rotas
 filterRoutes.get('/', filterController.getGenres);
 filterRoutes.get('/hr', filterController.getMoviesByGenreAndRating);
-filterRoutes.get('/hr/:neighborhood', filterController.getSessionsByNeighborhood);
+filterRoutes.get('/hr/:neighborhood/:movieId/:neighborhood', filterController.getSessionsByNeighborhood);
 
 // Exportação
 module.exports = filterRoutes;
